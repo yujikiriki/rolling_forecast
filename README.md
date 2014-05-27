@@ -1,4 +1,3 @@
-rolling_forecast
-================
+# Rolling forecast
 
-Rolling forecast
+Play framework dummy project
