@@ -1,3 +1,3 @@
 # Rolling forecast
 
-Play framework dummy project
+Angular.js & Play framework dummy project
