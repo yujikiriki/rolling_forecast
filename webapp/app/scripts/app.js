@@ -2,6 +2,7 @@
 
 angular
   .module('frontendApp', [
+    'accountModule',
     'ngCookies',
     'ngResource',
     'ngSanitize',
@@ -10,10 +11,11 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/crear-cuenta.html',
+        controller: 'CrearCuentaController'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
