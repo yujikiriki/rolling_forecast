@@ -11,12 +11,17 @@ accountModule.factory('accountServices', [
 
         /* Resource definition */
         var accountResource = $resource(
-            'http://localhost:9100/accounts/:Id', 
-            {Id: '@Id'}, 
-            {
-            	'update': { method: 'PUT' },
-            	'query': { method: 'GET', isArray: true}
-        	}
+            'http://localhost:9100/accounts/:Id', {
+                Id: '@Id'
+            }, {
+                'update': {
+                    method: 'PUT'
+                },
+                'query': {
+                    method: 'GET',
+                    isArray: true
+                }
+            }
         );
 
         return {
@@ -29,8 +34,7 @@ accountModule.factory('accountServices', [
 
             /* Create an Account */
             create: function(account) {
-                console.log('Account to be created: ', account);
-                return 'Create';
+                accountResource.save(account);
             }
         };
     }

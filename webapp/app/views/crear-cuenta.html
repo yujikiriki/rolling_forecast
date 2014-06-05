@@ -1,4 +1,5 @@
 <div ng-controller="CrearCuentaController">
+        <alert ng-repeat="message in feedbackMessages" type="{{message.type}}" close="closeAlert($index)">{{message.text}}</alert>
   <div class="panel panel-default">
     <div class="panel-heading">Crear cuenta</div>
     <div class="panel-body">
