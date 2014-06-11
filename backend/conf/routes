@@ -1,6 +1,20 @@
-GET     /accounts                   @controllers.Accounts.list
-POST    /accounts                   @controllers.Accounts.create
-OPTIONS /*url                       @controllers.Accounts.options(url)
+# Accounts
+GET         /accounts                       @controllers.Accounts.list
+POST        /accounts                       @controllers.Accounts.create
+DELETE      /accounts/:id                   @controllers.Accounts.delete(id)
+
+# Products
+GET         /products                       @controllers.Products.list
+POST        /products                       @controllers.Products.create
+DELETE      /products/:id                   @controllers.Products.delete(id)
+
+# Opportunities
+GET         /opportunities                  @controllers.Opportunities.list
+POST        /opportunities                  @controllers.Opportunities.create
+DELETE      /opportunities/:id              @controllers.Opportunities.delete(id)
+
+# CORS
+OPTIONS     /*url                           @controllers.Accounts.options(url)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -25,26 +25,18 @@ angular.module('frontendApp').controller('CrearCuentaController', [
 		/* Servicios */
 		$scope.crearCuenta = function(isValid) {
 			if (isValid) {
-                $scope.account.departament = $scope.account.departament.name;
+				$scope.account.departament = $scope.account.departament.name;
 				accountServices.create($scope.account);
 				$scope.feedbackMessages.push({
 					type: 'success',
 					text: 'La cuenta [' + $scope.account.name + '] ha sido creada correctamente.'
-				});				
+				});
 				$scope.account = null;
-			}
-			else
+			} else
 				$scope.feedbackMessages.push({
 					type: 'warning',
 					text: 'Falta diligenciar algunos campos del formulario.'
 				});
-		};
-
-		$scope.queryAll = function() {
-			var accounts = accountServices.queryAll();
-			accounts.then(function(accountList) {
-				$scope.accounts = accountList;
-			});
 		};
 
 		$scope.closeAlert = function(index) {

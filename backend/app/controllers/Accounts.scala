@@ -1,5 +1,7 @@
 package controllers
 
+import reactivemongo.bson.BSONObjectID
+
 import scala.concurrent.Future
 
 import models.{Account, AccountJsonFormat}
@@ -10,40 +12,55 @@ import play.api.mvc._
 import play.modules.reactivemongo.MongoController
 import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api.Cursor
+import play.modules.reactivemongo.json.BSONFormats._
 
 class Accounts extends Controller with MongoController {
+
   import Accounts._
   import AccountJsonFormat._
 
-  def collection: JSONCollection = db.collection[ JSONCollection ]( "accounts" )
+  def collection: JSONCollection = db.collection[JSONCollection]("accounts")
 
-  def create = Action.async( parse.json ) {
+  def create = Action.async(parse.json) {
     request =>
-      request.body.validate[ Account ].map {
+      request.body.validate[Account].map {
         account =>
           collection.insert(account).map {
             lastError =>
               logger.debug(s"Successfully inserted with LastError: $lastError")
-              Created( s"Account created" )
+              Created(s"Account created")
           }
-      }.getOrElse( Future.successful( BadRequest( "invalid json" ) ) )
+      }.getOrElse(Future.successful(BadRequest("invalid json")))
   }
 
   def list = Action.async {
-    val cursor: Cursor[Account] = collection.
-      find( Json.obj() ).
-      sort(Json.obj( "created" -> -1 ) ).
-      cursor[ Account ]
-
-    val futureUsersList: Future[ List[ Account ] ] = cursor.collect[ List ]()
-    val futurePersonsJsonArray: Future[JsArray] = futureUsersList.map {
-      users =>
-        Json.arr( users )
+    val cursor: Cursor[Account] = collection.find(Json.obj()).sort(Json.obj("created" -> -1)).cursor[Account]
+    val futureAccountsList: Future[List[Account]] = cursor.collect[List]()
+    val futureAccountsJsonArray: Future[JsArray] = futureAccountsList.map {
+      accounts =>
+        Json.arr(accounts)
     }
 
-    futurePersonsJsonArray.map {
-      users =>
-        Ok(users(0))
+    futureAccountsJsonArray.map {
+      accounts =>
+        Ok(accounts(0))
+    }
+  }
+
+  def delete( id: String ) = Action.async {
+    logger.debug(s"Entra a eliminar la cuenta ${id}")
+    val cursor: Cursor[Account] = collection.find(Json.obj( "_id" -> BSONObjectID(id) )).sort(Json.obj("created" -> -1)).cursor[Account]
+    cursor.collect[List]().map {
+      accounts =>
+        if( accounts.isEmpty ) {
+          logger.debug(s"No se encontro la cuenta")
+          NoContent
+        }
+        else {
+          logger.debug(s"The account to be removed: ${id}")
+          collection.remove(accounts.head)
+          NoContent
+        }
     }
   }
 

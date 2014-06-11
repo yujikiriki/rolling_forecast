@@ -11,8 +11,8 @@ accountModule.factory('accountServices', [
 
         /* Resource definition */
         var accountResource = $resource(
-            'http://localhost:9100/accounts/:Id', {
-                Id: '@Id'
+            'http://localhost:9100/accounts/:id', {
+                id: '@id'
             }, {
                 'update': {
                     method: 'PUT'
@@ -20,6 +20,10 @@ accountModule.factory('accountServices', [
                 'query': {
                     method: 'GET',
                     isArray: true
+                },
+                'delete': {
+                    method: 'DELETE',
+                    params: {}
                 }
             }
         );
@@ -35,6 +39,12 @@ accountModule.factory('accountServices', [
             /* Create an Account */
             create: function(account) {
                 accountResource.save(account);
+            },
+
+            /* Delete an Account */
+            delete: function(accountName) {
+                console.log('The account to be deleted: ', accountName);
+                accountResource.delete( { id : accountName } );
             }
         };
     }
