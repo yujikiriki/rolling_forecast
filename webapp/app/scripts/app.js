@@ -9,13 +9,19 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'nvd3ChartDirectives'
   ])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/crear-cuenta.html',
-        controller: 'CrearCuentaController'
+        templateUrl: 'views/tablero-control.html',
+        controller: 'TableroControlCtrl'
+      })
+// Tablero de control      
+      .when('/tablero-control', {
+        templateUrl: 'views/tablero-control.html',
+        controller: 'TableroControlCtrl'
       })
 // Cuentas      
       .when('/crear-cuenta', {

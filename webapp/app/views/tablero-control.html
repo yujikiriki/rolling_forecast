@@ -1,0 +1,51 @@
+<div class="page-header">
+	<h2>Tablero de control</h2>
+</div>
+<div ng-controller="TableroControlCtrl">
+	<div class="container">
+		<div class="row">
+			<p>Acumulativo</p>
+			<nvd3-cumulative-line-chart data="exampleData" id="exampleId" width="800" height="400" showXAxis="true" showYAxis="true" tooltips="true" interactive="true" x="xFunction()" y="yFunction()" color="colorFunction()" isArea="true" margin="{left:50,top:50,bottom:50,right:50}">
+				<svg></svg>
+			</nvd3-cumulative-line-chart>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<p>Barras discreta</p>
+			<nvd3-discrete-bar-chart data="exampleData2" id="exampleId2" margin="{left:100,top:100,bottom:50,right:10}" showXAxis="true" showYAxis="true">
+				<svg></svg>
+			</nvd3-discrete-bar-chart>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<p>Bullet</p>
+			<nvd3-bullet-chart data="exampleData3" id="exampleId3" margin="{left:75,top:30,bottom:30,right:10}" width="550" height="160">
+				<svg></svg>
+			</nvd3-bullet-chart>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<p>Barras historicas</p>
+			<nvd3-historical-bar-chart data="exampleData4" showXAxis="true" showYAxis="true" showLegend="true">
+			</nvd3-historical-bar-chart>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<p>Line chart</p>
+			   <nvd3-line-chart data="exampleData5" showXAxis="true" showYAxis="true" width="600" height="400" tooltips="true" useInteractiveGuideline="true" showLegend="true" legendColor="legendColorFunction()">
+    		</nvd3-line-chart>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<p>Multibar</p>
+			<nvd3-multi-bar-chart data="exampleData6" id="exampleId6" height="400" showXAxis="true" showYAxis="true">
+				<svg></svg>
+			</nvd3-multi-bar-chart>	
+		</div>
+	</div>
+</div>
