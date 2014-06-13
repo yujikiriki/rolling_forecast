@@ -1,17 +1,17 @@
 'use strict';
 
-var accountModule = angular.module('accountModule', ['ngResource']);
+var opportunityModule = angular.module('opportunityModule', ['ngResource']);
 
 /**
  * Account services
  **/
-accountModule.factory('accountServices', [
+opportunityModule.factory('opportunityServices', [
     '$resource',
     function($resource) {
 
         /* Resource definition */
-        var accountResource = $resource(
-            'http://localhost:9100/accounts/:id', {
+        var opportunityResource = $resource(
+            'http://localhost:9100/opportunities/:id', {
                 id: '@id'
             }, {
                 'update': {
@@ -30,20 +30,20 @@ accountModule.factory('accountServices', [
 
         return {
 
-            /* GET all Accounts available */
+            /* GET all opportunities available */
             queryAll: function() {
-                var all = accountResource.query();
+                var all = opportunityResource.query();
                 return all.$promise;
             },
 
             /* Create an Account */
-            create: function(account) {
-                accountResource.save(account);
+            create: function(opportunity) {
+                opportunityResource.save(opportunity);
             },
 
-            /* Delete an Account */
+            /* Delete an opportunity */
             delete: function(opportunityId) {
-                accountResource.delete( { id : opportunityId } );
+                opportunityResource.delete( { id : opportunityId } );
             }
         };
     }

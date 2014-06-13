@@ -7,9 +7,6 @@ angular.module('frontendApp').controller('CrearCuentaController', [
 		/* Feedback messages */
 		$scope.feedbackMessages = [];
 
-		/* queryAll() result */
-		$scope.accounts = [];
-
 		/* Departamens and cities */
 		$scope.departaments = [{
 			'name': 'Antioquia',

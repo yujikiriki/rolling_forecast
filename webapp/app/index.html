@@ -44,17 +44,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Listar</a></li>
+              <li><a href="#/productos">Listar</a></li>
               <li class="divider"></li>
-              <li><a href="#">Crear</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oportunidades <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Listar</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Crear</a></li>
+              <li><a href="#/crear-producto">Crear</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -62,7 +54,15 @@
             <ul class="dropdown-menu">
               <li><a href="#/cuentas">Listar</a></li>
               <li class="divider"></li>
-              <li><a href="#/crearcuenta">Crear</a></li>
+              <li><a href="#/crear-cuenta">Crear</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oportunidades <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#/oportunidades">Listar</a></li>
+              <li class="divider"></li>
+              <li><a href="#crear-oportunidad">Crear</a></li>
             </ul>
           </li>
         </ul>
@@ -95,8 +95,14 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/directives/ngconfirm.js"></script>
   <script src="scripts/services/accountServices.js"></script>
-  <script src="scripts/controllers/crearCuenta.js"></script>
-  <script src="scripts/controllers/maestroCuentas.js"></script>
+  <script src="scripts/services/productServices.js"></script>
+  <script src="scripts/services/opportunityServices.js"></script>
+  <script src="scripts/controllers/crear-cuenta.js"></script>
+  <script src="scripts/controllers/maestro-cuentas.js"></script>
+  <script src="scripts/controllers/crear-producto.js"></script>
+  <script src="scripts/controllers/maestro-productos.js"></script>
+  <script src="scripts/controllers/crear-oportunidad.js"></script>
+  <script src="scripts/controllers/maestro-oportunidades.js"></script>
   <!-- endbuild -->
 </body>
 </html>

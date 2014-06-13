@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('frontendApp').controller('MaestrocuentasCtrl', [
+angular.module('frontendApp').controller('MaestroCuentasCtrl', [
 	'$scope',
 	'accountServices',
 	function($scope, accountServices) {
-
 		/* Atributos */
 		$scope.accounts = [];
 

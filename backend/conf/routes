@@ -2,16 +2,19 @@
 GET         /accounts                       @controllers.Accounts.list
 POST        /accounts                       @controllers.Accounts.create
 DELETE      /accounts/:id                   @controllers.Accounts.delete(id)
+GET         /accounts/:id                   @controllers.Accounts.get(id)
 
 # Products
 GET         /products                       @controllers.Products.list
 POST        /products                       @controllers.Products.create
 DELETE      /products/:id                   @controllers.Products.delete(id)
+GET         /products/:id                   @controllers.Products.get(id)
 
 # Opportunities
 GET         /opportunities                  @controllers.Opportunities.list
 POST        /opportunities                  @controllers.Opportunities.create
 DELETE      /opportunities/:id              @controllers.Opportunities.delete(id)
+GET         /opportunities/:id              @controllers.Opportunities.get(id)
 
 # CORS
 OPTIONS     /*url                           @controllers.Accounts.options(url)

@@ -1,17 +1,17 @@
 'use strict';
 
-var accountModule = angular.module('accountModule', ['ngResource']);
+var productModule = angular.module('productModule', ['ngResource']);
 
 /**
- * Account services
+ * product services
  **/
-accountModule.factory('accountServices', [
+productModule.factory('productServices', [
     '$resource',
     function($resource) {
 
         /* Resource definition */
-        var accountResource = $resource(
-            'http://localhost:9100/accounts/:id', {
+        var productResource = $resource(
+            'http://localhost:9100/products/:id', {
                 id: '@id'
             }, {
                 'update': {
@@ -30,20 +30,20 @@ accountModule.factory('accountServices', [
 
         return {
 
-            /* GET all Accounts available */
+            /* GET all products available */
             queryAll: function() {
-                var all = accountResource.query();
+                var all = productResource.query();
                 return all.$promise;
             },
 
-            /* Create an Account */
-            create: function(account) {
-                accountResource.save(account);
+            /* Create an product */
+            create: function(product) {
+                productResource.save(product);
             },
 
-            /* Delete an Account */
-            delete: function(opportunityId) {
-                accountResource.delete( { id : opportunityId } );
+            /* Delete an product */
+            delete: function(productId) {
+                productResource.delete( { id : productId } );
             }
         };
     }

@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h2>Productos</h2>
+</div>
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Línea</th>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="product in products">
+			<td>{{$index + 1}}</td>
+			<td>{{product.businessLine}}</td>
+			<td>{{product.name}}</td>
+			<td>{{product.description}}</td>
+			<td><a ng-confirm-message="¿Está seguro que dese eliminar el producto {{product.name}}?" ng-confirm-click="eliminarProducto($parent.selected=product._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
+		</tr>
+	</tbody>
+</table>

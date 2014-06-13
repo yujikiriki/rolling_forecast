@@ -21,6 +21,18 @@ class Accounts extends Controller with MongoController {
 
   def collection: JSONCollection = db.collection[JSONCollection]("accounts")
 
+  def get( id: String ) = Action.async {
+    val cursor: Cursor[Account] = collection.find(Json.obj( "_id" -> BSONObjectID(id) )).sort(Json.obj("created" -> -1)).cursor[Account]
+    cursor.collect[List]().map {
+      accounts =>
+        if( accounts.isEmpty )
+          NotFound
+        else {
+          Ok(Json.toJson(accounts.head))
+        }
+    }
+  }
+
   def create = Action.async(parse.json) {
     request =>
       request.body.validate[Account].map {

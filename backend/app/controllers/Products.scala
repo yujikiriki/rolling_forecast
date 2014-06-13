@@ -23,6 +23,18 @@ class Products extends Controller with MongoController {
 
   def collection: JSONCollection = db.collection[JSONCollection]("products")
 
+  def get( id: String ) = Action.async {
+    val cursor: Cursor[Product] = collection.find(Json.obj( "_id" -> BSONObjectID(id) )).sort(Json.obj("created" -> -1)).cursor[Product]
+    cursor.collect[List]().map {
+      products =>
+        if( products.isEmpty )
+          NotFound
+        else {
+          Ok(Json.toJson(products.head))
+        }
+    }
+  }
+
   def create = Action.async(parse.json) {
     request =>
       request.body.validate[Product].map {

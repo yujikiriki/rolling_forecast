@@ -1,0 +1,40 @@
+<div ng-controller="CrearProductoCtrl">
+	<alert ng-repeat="message in feedbackMessages" type="{{message.type}}" close="closeAlert($index)">{{message.text}}</alert>
+	<div class="panel panel-default">
+		<div class="panel-heading">Crear producto</div>
+		<div class="panel-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-11">
+						<form name="frmCrearProducto" class="form-horizontal" role="form" novalidate>
+							<div class="form-group">
+								<label class="control-label" for="business-lines">Línea de negocio:</label>
+								<select required ng-model="product.businessLine" class="form-control" name="businessLines" ng-options="businessLine.name for businessLine in businessLines"></select>
+								<p ng-show="frmCrearProducto.businessLines.$invalid" class="help-block">Debe seleccionar una línea de negocio.</p>
+							</div>
+							<div class="form-group">
+								<label for="product-name">Nombre del producto:</label>
+								<input required ng-minlength="2" ng-model="product.name" type="text" class="form-control" name="nombreProducto" placeholder="Ingrese el nombre del producto" />
+								<p ng-show="frmCrearProducto.nombreProducto.$invalid" class="help-block">El nombre del producto es obligatorio y debe contener más de dos caracteres.</p>
+							</div>
+							<div class="form-group">
+								<label for="product-description">Descripción del producto:</label>
+								<textarea required ng-minlength="2" ng-model="product.description" type="text" class="form-control" name="descripcionProducto" placeholder="Ingrese una descripción del producto" />
+								<p ng-show="frmCrearProducto.descripcionProducto.$invalid" class="help-block">La descripción del producto es obligatorio y debe contener más de dos caracteres.</p>
+							</div>							
+						</form>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-offset-9 col-lg-12">
+						<button type="button" class="btn btn btn-danger">Cancelar</button>
+						<button type="button" class="btn btn-success" ng-click="crearProducto(frmCrearProducto.$valid)" ng-disabled="frmCrearProducto.$invalid">Crear</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
