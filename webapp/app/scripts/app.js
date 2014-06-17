@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('frontendApp', [
+  .module('frontendApp', [    
     'opportunityModule',
     'productModule',
     'accountModule',
@@ -10,7 +10,9 @@ angular
     'ngSanitize',
     'ngRoute',
     'ui.bootstrap',
-    'nvd3ChartDirectives'
+    'nvd3ChartDirectives',
+    'underscoreModule',
+    'mgcrea.ngStrap'
   ])
   .config(function($routeProvider) {
     $routeProvider

@@ -2,7 +2,7 @@ package models
 
 import reactivemongo.bson.BSONObjectID
 
-case class Account( _id: Option[BSONObjectID], name: String, departament: String, city: String )
+case class Account( _id: Option[BSONObjectID], nit: String, name: String, departament: String, city: String )
 
 object AccountJsonFormat {
   import play.modules.reactivemongo.json.BSONFormats._

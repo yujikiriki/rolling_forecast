@@ -2,8 +2,12 @@
 
 angular.module('frontendApp').controller('MaestroOportunidadesCtrl', [
 	'$scope',
-	'opportunityServices',		
-	function ($scope, opportunityServices) {
+	'_',
+	'$q',
+	'opportunityServices',
+	'accountServices',
+	'productServices',
+	function($scope, _, $q, opportunityServices, accountServices, productServices) {
 		/* Atributos */
 		$scope.opportunities = [];
 
@@ -18,10 +22,28 @@ angular.module('frontendApp').controller('MaestroOportunidadesCtrl', [
 
 		/* Metodos privados */
 		function queryAll() {
-			var opportunities = opportunityServices.queryAll();
-			opportunities.then(function(opportunityList) {				
-				$scope.opportunities = opportunityList;
-			});
-		};		
-	}
-]);		
+			opportunityServices.queryAll()
+				/* Load all Opportunities */
+				.then(function(opportunityList) {
+					$scope.opportunities = opportunityList;				
+				})
+				/* Translate AccountName */
+				.then(function() {
+					_.map($scope.opportunities, function(opportunity){
+						var pAccount = accountServices.get(opportunity.accountId);
+						pAccount.then(function( account ) {
+							opportunity.accountName = account.name;
+						});
+					});
+				})
+				/* Translate ProductName */
+				.then( function() {
+					_.map($scope.opportunities, function(opportunity){
+						var pProduct = productServices.get(opportunity.productId);
+						pProduct.then(function( product ) {
+							opportunity.productName = product.name;
+						});
+					});					
+				});			
+		}
+}]);

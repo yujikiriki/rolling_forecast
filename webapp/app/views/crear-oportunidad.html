@@ -1,55 +1,99 @@
+<div class="page-header">
+  <h2>Crear oportunidad</h2>
+</div>
 <div ng-controller="CrearOportunidadCtrl">
+<form name="frmCrearOportunidad" class="form-horizontal" role="form" >
 	<alert ng-repeat="message in feedbackMessages" type="{{message.type}}" close="closeAlert($index)">{{message.text}}</alert>
-	<div class="panel panel-default">
-		<div class="panel-heading">Crear oportunidad</div>
-		<div class="panel-body">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-11">
-						<form name="frmCrearOportunidad" class="form-horizontal" role="form" novalidate>
-							<div class="form-group">
-								<label for="opportunity-name">Nombre de la oportunidad:</label>
-								<input required ng-minlength="2" ng-model="opportunity.name" type="text" class="form-control" name="nombreOportunidad" placeholder="Ingrese el nombre de la oportunidad" />
-								<p ng-show="frmCrearOportunidad.nombreOportunidad.$invalid" class="help-block">El nombre de la oportunidad es obligatorio y debe contener más de dos caracteres.</p>
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="accounts">Cuentas:</label>
-								<select required ng-model="opportunity.accountId" class="form-control" name="accounts" ng-options="account.name for account in accounts"></select>
-								<p ng-show="frmCrearOportunidad.accounts.$invalid" class="help-block">Debe seleccionar una cuenta.</p>
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="products">Productos:</label>
-								<select required ng-model="opportunity.productId" class="form-control" name="products" ng-options="product.name for product in products"></select>
-								<p ng-show="frmCrearOportunidad.products.$invalid" class="help-block">Debe seleccionar una cuenta.</p>
-							</div>
-							<div class="form-group">
-								<label for="opportunity-quantity">Cantidad:</label>
-								<input required ng-minlength="2" ng-model="opportunity.quantity" type="text" class="form-control" name="cantidad" placeholder="Ingrese la cantidad" />
-								<p ng-show="frmCrearOportunidad.cantidad.$invalid" class="help-block">La cantidad de elementos del producto es obligatorio</p>
-							</div>
-							<div class="form-group">
-								<label for="opportunity-value">Valor:</label>
-								<input required ng-minlength="2" ng-model="opportunity.value" type="text" class="form-control" name="valor" placeholder="Ingrese el valor de la oportunidad" />
-								<p ng-show="frmCrearOportunidad.valor.$invalid" class="help-block">El valor de la oportunidad es obligatorio</p>
-							</div>	
-							<div class="form-group">
-								<label class="control-label" for="estados">Estado:</label>
-								<select required ng-model="opportunity.state" class="form-control" name="states" ng-options="state.name for state in states"></select>
-								<p ng-show="frmCrearOportunidad.states.$invalid" class="help-block">Debe seleccionar un estado.</p>
-							</div>																				
-						</form>
-					</div>
-				</div>
-			</div>
-			<br/>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-offset-9 col-lg-12">
-						<button type="button" class="btn btn btn-danger">Cancelar</button>
-						<button type="button" class="btn btn-success" ng-click="crearOportunidad(frmCrearOportunidad.$valid)" ng-disabled="frmCrearOportunidad.$invalid">Crear</button>
+		<div class="panel panel-default">
+			<div class="panel-heading">Datos básicos</div>
+			<div class="panel-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-11">
+								<div class="form-group">
+									<label for="opportunity-name">Nombre de la oportunidad:</label>
+									<input required ng-minlength="2" ng-model="opportunity.name" type="text" class="form-control" name="nombreOportunidad" placeholder="Ingrese el nombre de la oportunidad" />
+									<p ng-show="frmCrearOportunidad.nombreOportunidad.$invalid" class="help-block">El nombre de la oportunidad es obligatorio y debe contener más de dos caracteres.</p>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="accounts">Cuentas:</label>
+									<select required ng-model="opportunity.accountId" class="form-control" name="accounts" ng-options="account.name for account in accounts"></select>
+									<p ng-show="frmCrearOportunidad.accounts.$invalid" class="help-block">Debe seleccionar una cuenta.</p>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="products">Productos:</label>
+									<select required ng-model="opportunity.productId" class="form-control" name="products" ng-options="product.name for product in products"></select>
+									<p ng-show="frmCrearOportunidad.products.$invalid" class="help-block">Debe seleccionar una cuenta.</p>
+								</div>
+								<div class="form-group">
+									<label for="opportunity-quantity">Cantidad:</label>
+									<input required ng-minlength="1" ng-model="opportunity.quantity" type="number" class="form-control" name="cantidad" placeholder="Ingrese la cantidad" />
+									<p ng-show="frmCrearOportunidad.cantidad.$invalid" class="help-block">La cantidad de elementos del producto es obligatorio</p>
+								</div>
+								<div class="form-group">
+									<label for="opportunity-value">Valor:</label>
+									<input required ng-minlength="2" ng-model="opportunity.value" type="number" class="form-control" name="valor" placeholder="Ingrese el valor de la oportunidad" />
+									<p ng-show="frmCrearOportunidad.valor.$invalid" class="help-block">El valor de la oportunidad es obligatorio</p>
+								</div>	
+								<div class="form-group">
+									<label class="control-label" for="estados">Estado:</label>
+									<select required ng-model="opportunity.state" class="form-control" name="states" ng-options="state.name for state in states"></select>
+									<p ng-show="frmCrearOportunidad.states.$invalid" class="help-block">Debe seleccionar un estado.</p>
+								</div>																				
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Orden de compra</div>
+			<div class="panel-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-11">
+						  <div class="form-group">
+						    <label for="orderDate">Fecha:</label>
+						    <input required type="date" class="form-control" ng-model="opportunity.order.date" name="orderDate" bs-datepicker>
+								<p ng-show="frmCrearOportunidad.orderDate.$invalid" class="help-block">La fecha en la que se crea como oportunidad es obligatorio.</p>
+						  </div>								
+						  <div class="form-group">
+									<label for="probabilidadOrden">Probabilidad:</label>
+									<select required ng-model="opportunity.order.probability" class="form-control" name="orderProbability" ng-options="probability for probability in probabilities"></select>
+									<p ng-show="frmCrearOportunidad.orderProbability.$invalid" class="help-block">Debe seleccionar una probabilidad.</p>									
+							</div>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Venta</div>
+			<div class="panel-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-11">
+								<div class="form-group">
+									<label for="fechaOrden">Fecha:</label>
+									<input type="date" class="form-control" name="fechaOrden">
+									<p ng-show="frmCrearOportunidad.fechaOrden.$invalid" class="help-block">El nombre de la oportunidad es obligatorio y debe contener más de dos caracteres.</p>
+								</div>
+								<div class="form-group">
+									<label for="probabilidadOrden">Probabilidad:</label>
+									<input type="text" class="form-control" name="probabilidadOrden">
+									<p ng-show="frmCrearOportunidad.probabilidadOrden.$invalid" class="help-block">El nombre de la oportunidad es obligatorio y debe contener más de dos caracteres.</p>
+								</div>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-offset-9 col-lg-11">
+					<button type="button" class="btn btn btn-danger">Cancelar</button>
+					<button type="button" class="btn btn-success" ng-click="crearOportunidad(frmCrearOportunidad.$valid)" ng-disabled="frmCrearOportunidad.$invalid">Crear</button>
+				</div>
+			</div>
+		</div>
+</form>				
 </div>

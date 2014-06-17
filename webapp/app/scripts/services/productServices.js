@@ -29,6 +29,11 @@ productModule.factory('productServices', [
         );
 
         return {
+            /* GET a Product */
+            get: function(productId) {
+                var product = productResource.get({id: productId});
+                return product.$promise;
+            },
 
             /* GET all products available */
             queryAll: function() {

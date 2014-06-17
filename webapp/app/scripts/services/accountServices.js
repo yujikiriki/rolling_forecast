@@ -30,6 +30,12 @@ accountModule.factory('accountServices', [
 
         return {
 
+            /* GET an Account */
+            get: function(accountId) {
+                var account = accountResource.get({id: accountId});
+                return account.$promise;
+            },
+
             /* GET all Accounts available */
             queryAll: function() {
                 var all = accountResource.query();
@@ -42,8 +48,8 @@ accountModule.factory('accountServices', [
             },
 
             /* Delete an Account */
-            delete: function(opportunityId) {
-                accountResource.delete( { id : opportunityId } );
+            delete: function(accountId) {
+                accountResource.delete({id: accountId});
             }
         };
     }

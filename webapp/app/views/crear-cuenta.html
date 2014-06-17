@@ -5,8 +5,13 @@
     <div class="panel-body">
       <div class="container">
         <div class="row">
-          <div class="col-lg-11">
+          <div class="col-lg-11"> 
             <form name="frmCrearCuenta" class="form-horizontal" role="form" novalidate>
+              <div class="form-group">
+                <label for="nit-cuenta">NIT:</label>
+                <input required ng-minlength="9" ng-model="account.nit" type="text" class="form-control" name="nitCuenta" placeholder="Ingrese el NIT de la cuenta" />
+                <p ng-show="frmCrearCuenta.nombreCuenta.$invalid" class="help-block">El NIT es obligatorio y debe contener 9 caracteres (sin digito de verificación).</p>
+              </div>            
               <div class="form-group">
                 <label for="nombre-cuenta">Nombre de la cuenta:</label>
                 <input required ng-minlength="2" ng-model="account.name" type="text" class="form-control" name="nombreCuenta" placeholder="Ingrese el nombre de la cuenta" />
