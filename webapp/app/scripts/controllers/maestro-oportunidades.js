@@ -44,6 +44,15 @@ angular.module('frontendApp').controller('MaestroOportunidadesCtrl', [
 							opportunity.productName = product.name;
 						});
 					});					
-				});			
+				})
+				/* Clean dates */
+				.then( function() {
+					_.map($scope.opportunities, function(opportunity){
+							opportunity.order.date = opportunity.order.date.substring(0,10);
+							opportunity.sale.date = opportunity.sale.date.substring(0,10);
+							opportunity.order.probability = opportunity.order.probability + '%';
+							opportunity.sale.probability = opportunity.sale.probability + '%';
+						});
+					});									
 		}
 }]);

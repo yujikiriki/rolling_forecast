@@ -11,7 +11,7 @@ productModule.factory('productServices', [
 
         /* Resource definition */
         var productResource = $resource(
-            'http://localhost:9100/products/:id', {
+            'http://localhost/api/products/:id', {
                 id: '@id'
             }, {
                 'update': {

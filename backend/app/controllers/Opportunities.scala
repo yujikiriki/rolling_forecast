@@ -19,69 +19,78 @@ class Opportunities extends Controller with MongoController {
   import Opportunities._
   import OpportunityJsonFormat._
 
-  def collection: JSONCollection = db.collection[JSONCollection]("opportunities")
+  def collection: JSONCollection = db.collection[ JSONCollection ]( "opportunities" )
 
   def get( id: String ) = Action.async {
-    val cursor: Cursor[Opportunity] = collection.find(Json.obj( "_id" -> BSONObjectID(id) )).sort(Json.obj("created" -> -1)).cursor[Opportunity]
-    cursor.collect[List]().map {
+    val cursor: Cursor[ Opportunity ] = collection.find( Json.obj( "_id" -> BSONObjectID( id ) ) ).sort( Json.obj( "created" -> -1 ) ).cursor[ Opportunity ]
+    cursor.collect[ List ]( ).map {
       opportunities =>
-        if( opportunities.isEmpty )
+        if ( opportunities.isEmpty )
           NotFound
         else {
-          Ok(Json.toJson(opportunities.head))
+          Ok( Json.toJson( opportunities.head ) )
         }
     }
   }
 
-  def create = Action.async(parse.json) {
+  def create = Action.async( parse.json ) {
     request =>
-      request.body.validate[Opportunity].map {
+      val f = request.body.validate[ Opportunity ].map {
         opportunity =>
-          collection.insert(opportunity).map {
+          collection.insert( opportunity ).map {
             lastError =>
-              logger.debug(s"Successfully inserted with LastError: $lastError")
-              Created(s"Opportunity created")
+              logger.debug( s"Successfully inserted with LastError: $lastError" )
+              Created( s"Opportunity created" )
           }
-      }.getOrElse(Future.successful(BadRequest("invalid json")))
+      }
+
+      f.fold(
+        fallaEnSerializacion => {
+          Future.successful( BadRequest( s"Invalid json: ${fallaEnSerializacion}" ) )
+        },
+        respuesta => {
+          respuesta
+        }
+      )
   }
 
   def list = Action.async {
-    val cursor: Cursor[Opportunity] = collection.find(Json.obj()).sort(Json.obj("created" -> -1)).cursor[Opportunity]
-    val futureOpportunitysList: Future[List[Opportunity]] = cursor.collect[List]()
-    val futureOpportunitysJsonArray: Future[JsArray] = futureOpportunitysList.map {
+    val cursor: Cursor[ Opportunity ] = collection.find( Json.obj( ) ).sort( Json.obj( "created" -> -1 ) ).cursor[ Opportunity ]
+    val futureOpportunitysList: Future[ List[ Opportunity ] ] = cursor.collect[ List ]( )
+    val futureOpportunitysJsonArray: Future[ JsArray ] = futureOpportunitysList.map {
       opportunities =>
-        Json.arr(opportunities)
+        Json.arr( opportunities )
     }
 
     futureOpportunitysJsonArray.map {
       opportunities =>
-        Ok(opportunities(0))
+        Ok( opportunities( 0 ) )
     }
   }
 
   def delete( id: String ) = Action.async {
-    val cursor: Cursor[Opportunity] = collection.find(Json.obj( "_id" -> BSONObjectID(id) )).sort(Json.obj("created" -> -1)).cursor[Opportunity]
-    cursor.collect[List]().map {
+    val cursor: Cursor[ Opportunity ] = collection.find( Json.obj( "_id" -> BSONObjectID( id ) ) ).sort( Json.obj( "created" -> -1 ) ).cursor[ Opportunity ]
+    cursor.collect[ List ]( ).map {
       opportunities =>
-        if( opportunities.isEmpty )
+        if ( opportunities.isEmpty )
           NoContent
         else {
-          logger.debug(s"The opportunity to be removed: ${id}")
-          collection.remove(opportunities.head)
+          logger.debug( s"The opportunity to be removed: ${id}" )
+          collection.remove( opportunities.head )
           NoContent
         }
     }
   }
 
-  def options(url: String) = Action {
-    Ok(Json.obj("results" -> "success")).withHeaders(
+  def options( url: String ) = Action {
+    Ok( Json.obj( "results" -> "success" ) ).withHeaders(
       "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers" -> "Content-Type, X-Requested-With, Accept, Authorization, User-Agent",
-      "Access-Control-Max-Age" -> (60 * 60 * 24).toString
+      "Access-Control-Max-Age" -> ( 60 * 60 * 24 ).toString
     )
   }
 }
 
 object Opportunities {
-  val logger = LoggerFactory.getLogger(classOf[Opportunities])
+  val logger = LoggerFactory.getLogger( classOf[ Opportunities ] )
 }

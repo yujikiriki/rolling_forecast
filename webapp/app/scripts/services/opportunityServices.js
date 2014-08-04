@@ -11,7 +11,7 @@ opportunityModule.factory('opportunityServices', [
 
         /* Resource definition */
         var opportunityResource = $resource(
-            'http://localhost:9100/opportunities/:id', {
+            'http://localhost/api/opportunities/:id', {
                 id: '@id'
             }, {
                 'update': {
