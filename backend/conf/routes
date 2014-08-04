@@ -1,5 +1,6 @@
 # Reports
-GET         /order_income_report/:year            @controllers.OrderIncomeReport.get(year)
+GET         /order_income_report/:year      @controllers.OrderIncomeReport.get(year)
+GET         /sales_report/:year             @controllers.SalesReport.get(year)
 
 # Accounts
 GET         /accounts                       @controllers.Accounts.list

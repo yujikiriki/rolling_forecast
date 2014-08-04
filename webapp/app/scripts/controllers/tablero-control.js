@@ -4,9 +4,10 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 	'$scope',
 	'_',
 	'orderIncomeReportServices',
-	function($scope, _, orderIncomeReportServices) {
+	'salesReportServices',
+	function($scope, _, orderIncomeReportServices, salesReportServices) {
 
-		/* Constructor */
+		/* Attributes */
 		var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		$scope.years = ['2014', '2013', '2012'];
 		$scope.selectedYear = null;
@@ -29,33 +30,23 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 		$scope.exampleData = [{
 			"key": "Series 1",
 			"values": [
-				['2012', 4667],
-				['2013', 5006],
-				['2014', 4675],
+				['2012', 0],
+				['2013', 0],
+				['2014', 300],
 			]
 		}];
 
+		/* Public */
 		$scope.renderReport = function() {
-			var oiReport = orderIncomeReportServices.query($scope.selectedYear);
-			oiReport.then(function(result) {
-				var newReport = _.map(result, function(entry) {
-					var e = {
-						month: fromNumberToMonth(entry.month),
-						hundred: entry.hundred,
-						fifty: entry.fifty,
-						ten: entry.ten
-					};
-					return e;
-				});
-
-				buildReport(newReport);
-			});			
+			renderOrderIncomeReport();
+			renderSalesReport();
 		};
 
-		/* Privados */
-		function render() {
-			var oiReport = orderIncomeReportServices.query($scope.selectedYear);
-			oiReport.then(function(result) {
+		/* Private */
+
+		function renderSalesReport() {
+			var salesReport = salesReportServices.query($scope.selectedYear);
+			salesReport.then(function(result) {
 				var newReport = _.map(result, function(entry) {
 					var e = {
 						month: fromNumberToMonth(entry.month),
@@ -65,15 +56,38 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 					};
 					return e;
 				});
-
-				buildReport(newReport);
+				buildSalesReport(newReport);
 			});			
 		}
 
-		function buildReport(newReport) {
+		function renderOrderIncomeReport() {
+			var oiReport = orderIncomeReportServices.query($scope.selectedYear);
+			oiReport.then(function(result) {
+				var newReport = _.map(result, function(entry) {
+					var e = {
+						month: fromNumberToMonth(entry.month),
+						hundred: entry.hundred,
+						fifty: entry.fifty,
+						ten: entry.ten
+					};
+					return e;
+				});
+
+				buildOrderIncomeReport(newReport);
+			});
+		}
+
+		function buildOrderIncomeReport(newReport) {
 			$scope.orderIncomeReport = [];
 			_.each(months, function(month) {
 				addMonth($scope.orderIncomeReport, newReport, month);
+			});
+		}
+
+		function buildSalesReport(newReport) {
+			$scope.salesReport = [];
+			_.each(months, function(month) {
+				addMonth($scope.salesReport, newReport, month);
 			});
 		}
 

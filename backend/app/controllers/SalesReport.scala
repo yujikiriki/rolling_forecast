@@ -7,11 +7,11 @@ import play.modules.reactivemongo.MongoController
 import play.modules.reactivemongo.json.collection.JSONCollection
 import reactivemongo.api.Cursor
 
-class OrderIncomeReport extends Controller with MongoController {
+class SalesReport extends Controller with MongoController {
 
-  import OrderIncomeReportEntryJsonFormat._
+  import SaleReportEntryJsonFormat._
 
-  implicit val orderIncomeReportRowFormat = Json.format[ OrderIncomeReportRow ]
+  implicit val saleReportRowJsonFormat = Json.format[ SaleReportRow ]
 
   def opportunities: JSONCollection = db.collection[ JSONCollection ]( "opportunities" )
 
@@ -19,15 +19,15 @@ class OrderIncomeReport extends Controller with MongoController {
     val cursor: Cursor[ SaleReportEntry ] =
       opportunities
         .find(
-          Json.obj( "order.year" -> year ),
+          Json.obj( "sale.year" -> year ),
           Json.obj(
             "_id" -> 0,
             "value" -> 1,
-            "order.month" -> 1,
-            "order.probability" -> 1
+            "sale.month" -> 1,
+            "sale.probability" -> 1
           )
         )
-        .sort( Json.obj( "created" -> -1 ) )
+        .sort( Json.obj( "sale.month" -> 1 ) )
         .cursor[ SaleReportEntry ]
 
     cursor.collect[ List ]( ).map {
@@ -40,7 +40,7 @@ class OrderIncomeReport extends Controller with MongoController {
     }
   }
 
-  private def toReportEntry( entries: List[ SaleReportEntry ] ): List[ OrderIncomeReportRow ] = {
+  private def toReportEntry( entries: List[ SaleReportEntry ] ): List[ SaleReportRow ] = {
     val month: Map[ String, List[ SaleReportEntry ] ] = entries.groupBy( e => e.month )
 
     val list = month.map {
@@ -57,28 +57,28 @@ class OrderIncomeReport extends Controller with MongoController {
           .filter( oire => oire.probability < 50 && oire.probability >= 10 )
           .foldLeft( 0.0 )( _ + _.value )
 
-        OrderIncomeReportRow( x._1, hundred, fifty, ten )
+        SaleReportRow( x._1, hundred, fifty, ten )
     }
     list.toList
   }
 
 }
 
-case class OrderIncomeReportRow( month: String, hundred: Double, fifty: Double, ten: Double )
+case class SaleReportRow( month: String, hundred: Double, fifty: Double, ten: Double )
 
-case class OrderIncomeReportEntry( month: String, value: Double, probability: Double )
+case class SaleReportEntry( month: String, value: Double, probability: Double )
 
-object OrderIncomeReportEntryJsonFormat {
+object SaleReportEntryJsonFormat {
 
   import play.api.libs.json._
   import play.api.libs.functional.syntax._
 
-  implicit val orderIncomeReportRowFormat = Json.format[ OrderIncomeReportRow ]
+  implicit val saleReportRowJsonFormat = Json.format[ SaleReportRow ]
 
   implicit val OrderIncomeReportEntryReads: Reads[ SaleReportEntry ] =
-    ( ( JsPath \ "order" \ "month" ).read[ String ] and ( JsPath \ "value" ).read[ Double ] and ( JsPath \ "order" \ "probability" ).read[ Double ] )( SaleReportEntry.apply _ )
+    ( ( JsPath \ "sale" \ "month" ).read[ String ] and ( JsPath \ "value" ).read[ Double ] and ( JsPath \ "sale" \ "probability" ).read[ Double ] )( SaleReportEntry.apply _ )
 
   implicit val OrderIncomeReportEntryWrites: Writes[ SaleReportEntry ] =
-    ( ( JsPath \ "order" \ "month" ).write[ String ] and  ( JsPath \ "value" ).write[ Double ] and ( JsPath \ "order" \ "probability" ).write[ Double ] )( unlift( SaleReportEntry.unapply ) )
+    ( ( JsPath \ "sale" \ "month" ).write[ String ] and  ( JsPath \ "value" ).write[ Double ] and ( JsPath \ "sale" \ "probability" ).write[ Double ] )( unlift( SaleReportEntry.unapply ) )
 
 }

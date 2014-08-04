@@ -28,3 +28,27 @@ reportModule.factory('orderIncomeReportServices', [
         };
     }
 ]);
+
+reportModule.factory('salesReportServices', [
+    '$resource',
+    function($resource) {
+        /* Resource definition */
+        var reportResource = $resource(
+            'http://localhost/api/sales_report/:year', {
+                year: '@year'
+            }, {
+                'query': {
+                    method: 'GET',
+                    isArray: true
+                }
+            }
+        );
+        return {
+            /* GET a Product */
+            query: function( nYear ) {
+                var report = reportResource.query({year: nYear});
+                return report.$promise;
+            }
+        };
+    }
+]);
