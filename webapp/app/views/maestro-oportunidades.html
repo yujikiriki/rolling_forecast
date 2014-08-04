@@ -11,6 +11,10 @@
 			<th>Cantidad</th>
 			<th>Valor</th>
 			<th>Estado</th>
+			<th>OI date</th>
+			<th>OI %</th>
+			<th>Sale date</th>
+			<th>Sale %</th>			
 			<th>Acciones</th>
 		</tr>
 	</thead>
@@ -23,6 +27,10 @@
 			<td>{{opportuinity.quantity}}</td>
 			<td>{{opportuinity.value}}</td>
 			<td>{{opportuinity.state}}</td>
+			<td>{{opportuinity.order.date}}</td>
+			<td>{{opportuinity.order.probability}}</td>			
+			<td>{{opportuinity.sale.date}}</td>
+			<td>{{opportuinity.sale.probability}}</td>						
 			<td><a ng-confirm-message="¿Está seguro que dese eliminar la oportunidad {{opportuinity.name}}?" ng-confirm-click="eliminarOportunidad($parent.selected=opportuinity._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
 		</tr>
 	</tbody>

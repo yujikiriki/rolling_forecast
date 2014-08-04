@@ -39,11 +39,11 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 			if (isValid) {
 				var oportunidad = prepararOportunidadParaGuardar();
 				console.log('$scope.opportunity = ', $scope.opportunity);
-				// opportunityServices.create(oportunidad);
-				// $scope.feedbackMessages.push({
-				// 	type: 'success',
-				// 	text: 'La oportunidad [' + $scope.opportunity.name + '] ha sido creada correctamente.'
-				// });
+				opportunityServices.create(oportunidad);
+				$scope.feedbackMessages.push({
+					type: 'success',
+					text: 'La oportunidad [' + $scope.opportunity.name + '] ha sido creada correctamente.'
+				});
 				$scope.opportunity = null;
 			} else
 				$scope.feedbackMessages.push({
@@ -52,10 +52,21 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 				});
 		};
 
-
 		$scope.closeAlert = function(index) {
 			$scope.feedbackMessages.splice(index, 1);
 		};
+
+		$scope.openOrderDate = function($event) {
+    	$event.preventDefault();
+    	$event.stopPropagation();
+    	$scope.openedOrderDate = true;
+  	}; 
+
+		$scope.openSaleDate = function($event) {
+    	$event.preventDefault();
+    	$event.stopPropagation();
+    	$scope.openedSaleDate = true;
+  	}; 
 
 		/* Privados */
 		function prepararOportunidadParaGuardar() {
@@ -63,10 +74,25 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 			$scope.opportunity.productId = $scope.opportunity.productId._id.$oid;
 			$scope.opportunity.quantity = parseInt($scope.opportunity.quantity);
 			$scope.opportunity.state = $scope.opportunity.state.name;
-			$scope.opportunity.order.probability = parseInt($scope.opportunity.order.probability.replace('%', ''));
-			$scope.opportunity.order.date = $scope.opportunity.order.date.toJSON();
-			console.log($scope.opportunity.order.date);
+			prepararOrdenParaGuardar();			
+			prepararVentaParaGuardar();
 			return $scope.opportunity;
+		}
+
+		function prepararOrdenParaGuardar() {
+			$scope.opportunity.order.probability = parseInt($scope.opportunity.order.probability.replace('%', ''));
+		  var orderDate = $scope.opportunity.order.date.toJSON();		
+		  $scope.opportunity.order.date = orderDate;
+			$scope.opportunity.order.year = orderDate.substring( 0, 4 );
+			$scope.opportunity.order.month = orderDate.substring( 5, 7 );			
+		}
+
+		function prepararVentaParaGuardar() {
+			$scope.opportunity.sale.probability = parseInt($scope.opportunity.sale.probability.replace('%', ''));
+		  var saleDate = $scope.opportunity.sale.date.toJSON();		
+		  $scope.opportunity.sale.date = saleDate;
+			$scope.opportunity.sale.year = saleDate.substring( 0, 4 );
+			$scope.opportunity.sale.month = saleDate.substring( 5, 7 );			
 		}
 
 		function cargarCuentas() {

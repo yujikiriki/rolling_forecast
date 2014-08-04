@@ -11,7 +11,7 @@ accountModule.factory('accountServices', [
 
         /* Resource definition */
         var accountResource = $resource(
-            'http://localhost:9100/accounts/:id', {
+            'http://localhost/api/accounts/:id', {
                 id: '@id'
             }, {
                 'update': {

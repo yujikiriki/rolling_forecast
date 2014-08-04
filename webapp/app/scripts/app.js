@@ -1,7 +1,8 @@
 'use strict';
 
 angular
-  .module('frontendApp', [    
+  .module('frontendApp', [
+    'reportModule',    
     'opportunityModule',
     'productModule',
     'accountModule',
