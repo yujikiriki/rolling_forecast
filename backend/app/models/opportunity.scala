@@ -1,14 +1,15 @@
 package models
 
-import reactivemongo.bson.BSONObjectID
+import play.api.libs.json._
+import reactivemongo.bson._
+import play.modules.reactivemongo.json.BSONFormats._
 
-case class Opportunity(_id: Option[BSONObjectID], name: String, accountId: String, productId: String, quantity: Int, value: String, state: String, order: OrderIncome)
-case class OrderIncome(date: String, probability: Int)
+case class Opportunity(_id: Option[BSONObjectID], name: String, accountId: String, productId: String, quantity: Int, value: Double, state: String, order: OrderIncome, sale: Sale )
+case class OrderIncome( date: String, month: String, year: String, probability: Int )
+case class Sale( date: String, month: String, year: String, probability: Int )
 
 object OpportunityJsonFormat {
-  import play.api.libs.json.Json
-  import play.modules.reactivemongo.json.BSONFormats._
-
-  implicit val orderFormat = Json.format[OrderIncome]
+  implicit val saleFormat = Json.format[Sale]
+  implicit val orderIncomeFormat = Json.format[OrderIncome]
   implicit val opportunityFormat = Json.format[Opportunity]
 }

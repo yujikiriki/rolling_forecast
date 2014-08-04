@@ -18,7 +18,7 @@ object Cors extends Filter {
   def apply(f: (RequestHeader) => Future[Result])(rh: RequestHeader): Future[Result] = {
     val result = f(rh)
     val origin = rh.headers.get("Origin")
-    val defaultAllowed = "http://127.0.0.1:9000"
+    val defaultAllowed = "http://localhost"
     val hostsAllowed = allowedOrigins.split(", ").toList
     val allowedOrigin = if (origin.isDefined && hostsAllowed.contains(origin.get)) origin.get else defaultAllowed
     result.map( _.withHeaders(
