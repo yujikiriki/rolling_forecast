@@ -1,3 +1,5 @@
+[![Stories in Ready](https://badge.waffle.io/yujikiriki/rolling_forecast.png?label=ready&title=Ready)](http://waffle.io/yujikiriki/rolling_forecast)
+
 # Rolling forecast
 
 * Angular.js & Play framework dummy project
