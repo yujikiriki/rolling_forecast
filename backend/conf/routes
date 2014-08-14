@@ -1,3 +1,12 @@
+# Responsibles
+GET         /responsibles                   @controllers.Users.getByRole(role: String)
+
+# Users
+GET         /users                          @controllers.Users.list
+POST        /users                          @controllers.Users.create
+DELETE      /users/:id                      @controllers.Users.delete(id)
+GET         /users/:id                      @controllers.Users.get(id)
+
 # Reports
 GET         /order_income_report/:year      @controllers.OrderIncomeReport.get(year)
 GET         /sales_report/:year             @controllers.SalesReport.get(year)
@@ -19,9 +28,6 @@ GET         /opportunities                  @controllers.Opportunities.list
 POST        /opportunities                  @controllers.Opportunities.create
 DELETE      /opportunities/:id              @controllers.Opportunities.delete(id)
 GET         /opportunities/:id              @controllers.Opportunities.get(id)
-
-# CORS
-OPTIONS     /*url                           @controllers.Accounts.options(url)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
