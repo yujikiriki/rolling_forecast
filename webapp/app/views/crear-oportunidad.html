@@ -1,3 +1,4 @@
+<ng-menubar></ng-menubar>
 <div class="page-header">
 	<h2>Crear oportunidad</h2>
 </div>
@@ -10,6 +11,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-11">
+							<div class="form-group">
+								<label for="opportunity-reponsible">Responsable:</label>
+								<select required ng-model="opportunity.responsible" class="form-control" name="responsibles" ng-options="responsible.name for responsible in responsibles"></select>
+								<p ng-show="frmCrearOportunidad.opportunity-reponsible.$invalid" class="help-block">Debe seleccionar un responsable.</p>
+							</div>						
 							<div class="form-group">
 								<label for="opportunity-name">Nombre de la oportunidad:</label>
 								<input required ng-minlength="2" ng-model="opportunity.name" type="text" class="form-control" name="nombreOportunidad" placeholder="Ingrese el nombre de la oportunidad" />

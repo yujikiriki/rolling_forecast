@@ -7,10 +7,11 @@ var reportModule = angular.module('reportModule', ['ngResource']);
  **/
 reportModule.factory('orderIncomeReportServices', [
     '$resource',
-    function($resource) {
+    'backend_server_ip',
+    function($resource, backend_server_ip) {
         /* Resource definition */
         var reportResource = $resource(
-            'http://localhost/api/order_income_report/:year', {
+            'http://' + backend_server_ip + '/api/order_income_report/:year', {
                 year: '@year'
             }, {
                 'query': {
@@ -31,10 +32,11 @@ reportModule.factory('orderIncomeReportServices', [
 
 reportModule.factory('salesReportServices', [
     '$resource',
-    function($resource) {
+    'backend_server_ip',
+    function($resource, backend_server_ip) {
         /* Resource definition */
         var reportResource = $resource(
-            'http://localhost/api/sales_report/:year', {
+            'http://' + backend_server_ip + '/api/sales_report/:year', {
                 year: '@year'
             }, {
                 'query': {

@@ -7,11 +7,12 @@ var productModule = angular.module('productModule', ['ngResource']);
  **/
 productModule.factory('productServices', [
     '$resource',
-    function($resource) {
+    'backend_server_ip',
+    function($resource, backend_server_ip) {
 
         /* Resource definition */
         var productResource = $resource(
-            'http://localhost/api/products/:id', {
+            'http://' + backend_server_ip + '/api/products/:id', {
                 id: '@id'
             }, {
                 'update': {

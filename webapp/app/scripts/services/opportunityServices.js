@@ -7,11 +7,12 @@ var opportunityModule = angular.module('opportunityModule', ['ngResource']);
  **/
 opportunityModule.factory('opportunityServices', [
     '$resource',
-    function($resource) {
+    'backend_server_ip',
+    function($resource, backend_server_ip) {
 
         /* Resource definition */
         var opportunityResource = $resource(
-            'http://localhost/api/opportunities/:id', {
+            'http://' + backend_server_ip + '/api/opportunities/:id', {
                 id: '@id'
             }, {
                 'update': {

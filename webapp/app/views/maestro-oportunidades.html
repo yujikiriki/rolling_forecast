@@ -1,3 +1,4 @@
+<ng-menubar></ng-menubar>
 <div class="page-header">
   <h2>Oportunidades</h2>
 </div>
@@ -5,6 +6,7 @@
 	<thead>
 		<tr>
 			<th>#</th>
+			<th>Responsable</th>
 			<th>Nombre</th>
 			<th>Cuenta</th>
 			<th>Producto</th>
@@ -21,6 +23,7 @@
 	<tbody>
 		<tr ng-repeat="opportuinity in opportunities">
 			<td>{{$index + 1}}</td>
+			<td>{{opportuinity.responsibleName}}</td>
 			<td>{{opportuinity.name}}</td>
 			<td>{{opportuinity.accountName}}</td>
 			<td>{{opportuinity.productName}}</td>

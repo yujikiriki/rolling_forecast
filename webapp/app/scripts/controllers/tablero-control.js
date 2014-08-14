@@ -28,13 +28,14 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 		}];
 
 		$scope.exampleData = [{
-			"key": "Series 1",
+			"key": "Order income",
 			"values": [
 				['2012', 0],
 				['2013', 0],
 				['2014', 300],
 			]
-		}];
+		}
+		];
 
 		/* Public */
 		$scope.renderReport = function() {
@@ -43,6 +44,9 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 		};
 
 		/* Private */
+		function queryOrderIncomeTotal() {
+
+		}
 
 		function renderSalesReport() {
 			var salesReport = salesReportServices.query($scope.selectedYear);
@@ -72,7 +76,6 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 					};
 					return e;
 				});
-
 				buildOrderIncomeReport(newReport);
 			});
 		}

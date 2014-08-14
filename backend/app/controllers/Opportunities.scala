@@ -82,13 +82,6 @@ class Opportunities extends Controller with MongoController {
     }
   }
 
-  def options( url: String ) = Action {
-    Ok( Json.obj( "results" -> "success" ) ).withHeaders(
-      "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers" -> "Content-Type, X-Requested-With, Accept, Authorization, User-Agent",
-      "Access-Control-Max-Age" -> ( 60 * 60 * 24 ).toString
-    )
-  }
 }
 
 object Opportunities {
