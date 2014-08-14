@@ -22,60 +22,15 @@
     body { padding-top: 70px; }
     ul.nav li.dropdown:hover > ul.dropdown-menu {
       display: block;    
-    }    underscore
+    }
   </style>
 </head>
 <body ng-app="frontendApp">
   <!--[if lt IE 7]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Rolling forecast</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="#/tablero-control">Tablero</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#/productos">Listar</a></li>
-              <li class="divider"></li>
-              <li><a href="#/crear-producto">Crear</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuentas <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#/cuentas">Listar</a></li>
-              <li class="divider"></li>
-              <li><a href="#/crear-cuenta">Crear</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Oportunidades <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#/oportunidades">Listar</a></li>
-              <li class="divider"></li>
-              <li><a href="#crear-oportunidad">Crear</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Salir</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <!-- Add your site or application content here -->
-  <div class="container" ng-view="">
-  </div>
+  <div class="container" ng-view=""></div>
   <!--[if lt IE 9]>
   <script src="bower_components/es5-shim/es5-shim.js"></script>
   <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -100,12 +55,19 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- App -->  
   <script src="scripts/app.js"></script>
+<!-- Directives -->
   <script src="scripts/directives/ngconfirm.js"></script>
+  <script src="scripts/directives/menubar.js"></script>
+<!-- Services -->  
   <script src="scripts/services/accountServices.js"></script>
   <script src="scripts/services/productServices.js"></script>
   <script src="scripts/services/opportunityServices.js"></script>
   <script src="scripts/services/orderIncomeReportService.js"></script>
+  <script src="scripts/services/userServices.js"></script>
+  <script src="scripts/services/loginServices.js"></script>
+<!-- Controllers -->  
   <script src="scripts/controllers/crear-cuenta.js"></script>
   <script src="scripts/controllers/maestro-cuentas.js"></script>
   <script src="scripts/controllers/crear-producto.js"></script>
@@ -113,6 +75,10 @@
   <script src="scripts/controllers/crear-oportunidad.js"></script>
   <script src="scripts/controllers/maestro-oportunidades.js"></script>
   <script src="scripts/controllers/tablero-control.js"></script>
+  <script src="scripts/controllers/crear-usuario.js"></script>
+  <script src="scripts/controllers/maestro-usuarios.js"></script>  
+  <script src="scripts/controllers/login.js"></script>
+<!-- Third party -->  
   <script src="scripts/services/underscoreModule.js"></script>
   <!-- endbuild -->
 </body>

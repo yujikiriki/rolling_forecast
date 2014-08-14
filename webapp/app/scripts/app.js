@@ -2,6 +2,8 @@
 
 angular
   .module('frontendApp', [
+    'loginModule',
+    'userModule',
     'reportModule',    
     'opportunityModule',
     'productModule',
@@ -15,12 +17,24 @@ angular
     'underscoreModule',
     'mgcrea.ngStrap'
   ])
+// Constantes  
+  .constant('backend_server_ip', '54.164.84.236')
+// Rutas  
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/tablero-control.html',
-        controller: 'TableroControlCtrl'
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
       })
+// Usuarios      
+      .when('/crear-usuario', {
+        templateUrl: 'views/crear-usuario.html',
+        controller: 'CrearUsuarioController'
+      })
+      .when('/usuarios', {
+        templateUrl: 'views/maestro-usuarios.html',
+        controller: 'MaestroUsuariosCtrl'
+      })      
 // Tablero de control      
       .when('/tablero-control', {
         templateUrl: 'views/tablero-control.html',

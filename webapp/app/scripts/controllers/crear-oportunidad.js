@@ -2,13 +2,15 @@
 
 angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 	'$scope',
+	'userServices',
 	'opportunityServices',
 	'accountServices',
 	'productServices',
-	function($scope, opportunityServices, accountServices, productServices) {
+	function($scope, userServices, opportunityServices, accountServices, productServices) {
 		/* Constructor */
 		cargarCuentas();
 		cargarProductos();
+		cargarResponsables();
 
 		/* Feedback messages */
 		$scope.feedbackMessages = [];
@@ -33,6 +35,7 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 		$scope.probabilities = ['0%', '10%', '15%', '20%', '25%', '30%', '35%', '40%', '45%', '50%', '55%', '60%', '65%', '70%', '75%', '80%', '85%', '90%', '95%', '100%'];
 		$scope.products = [];
 		$scope.accounts = [];
+		$scope.responsibles = [];
 
 		/* Servicios */
 		$scope.crearOportunidad = function(isValid) {
@@ -72,6 +75,7 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 		function prepararOportunidadParaGuardar() {
 			$scope.opportunity.accountId = $scope.opportunity.accountId._id.$oid;
 			$scope.opportunity.productId = $scope.opportunity.productId._id.$oid;
+			$scope.opportunity.userId = $scope.opportunity.responsible._id.$oid;
 			$scope.opportunity.quantity = parseInt($scope.opportunity.quantity);
 			$scope.opportunity.state = $scope.opportunity.state.name;
 			prepararOrdenParaGuardar();			
@@ -93,6 +97,13 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 		  $scope.opportunity.sale.date = saleDate;
 			$scope.opportunity.sale.year = saleDate.substring( 0, 4 );
 			$scope.opportunity.sale.month = saleDate.substring( 5, 7 );			
+		}
+
+		function cargarResponsables() {
+			var responsibles = userServices.queryResponsibles( 'Ejecutivo' );
+			responsibles.then(function(responsibleList) {
+				$scope.responsibles = responsibleList;
+			});
 		}
 
 		function cargarCuentas() {

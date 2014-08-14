@@ -7,11 +7,12 @@ var accountModule = angular.module('accountModule', ['ngResource']);
  **/
 accountModule.factory('accountServices', [
     '$resource',
-    function($resource) {
+    'backend_server_ip',
+    function($resource, backend_server_ip) {
 
         /* Resource definition */
         var accountResource = $resource(
-            'http://localhost/api/accounts/:id', {
+            'http://' + backend_server_ip + '/api/accounts/:id', {
                 id: '@id'
             }, {
                 'update': {
