@@ -6,6 +6,7 @@
 	<thead>
 		<tr>
 			<th>#</th>
+			<th>Línea</th>
 			<th>Responsable</th>
 			<th>Nombre</th>
 			<th>Cuenta</th>
@@ -21,20 +22,21 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="opportuinity in opportunities">
+		<tr ng-repeat="opportunity in opportunities">
 			<td>{{$index + 1}}</td>
-			<td>{{opportuinity.responsibleName}}</td>
-			<td>{{opportuinity.name}}</td>
-			<td>{{opportuinity.accountName}}</td>
-			<td>{{opportuinity.productName}}</td>
-			<td>{{opportuinity.quantity}}</td>
-			<td>{{opportuinity.value}}</td>
-			<td>{{opportuinity.state}}</td>
-			<td>{{opportuinity.order.date}}</td>
-			<td>{{opportuinity.order.probability}}</td>			
-			<td>{{opportuinity.sale.date}}</td>
-			<td>{{opportuinity.sale.probability}}</td>						
-			<td><a ng-confirm-message="¿Está seguro que dese eliminar la oportunidad {{opportuinity.name}}?" ng-confirm-click="eliminarOportunidad($parent.selected=opportuinity._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
+			<td>{{opportunity.businessLine}}</td>
+			<td>{{opportunity.responsibleName}}</td>
+			<td>{{opportunity.name}}</td>
+			<td>{{opportunity.accountName}}</td>
+			<td>{{opportunity.productName}}</td>
+			<td>{{opportunity.quantity}}</td>
+			<td>{{opportunity.value}}</td>
+			<td>{{opportunity.state}}</td>
+			<td>{{opportunity.order.date}}</td>
+			<td>{{opportunity.order.probability}}</td>			
+			<td>{{opportunity.sale.date}}</td>
+			<td>{{opportunity.sale.probability}}</td>						
+			<td><a ng-confirm-message="¿Está seguro que dese eliminar la oportunidad {{opportunity.name}}?" ng-confirm-click="eliminarOportunidad($parent.selected=opportunity._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
 		</tr>
 	</tbody>
 </table>

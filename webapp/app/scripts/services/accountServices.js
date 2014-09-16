@@ -51,7 +51,12 @@ accountModule.factory('accountServices', [
             /* Delete an Account */
             delete: function(accountId) {
                 accountResource.delete({id: accountId});
-            }
+            },
+
+            /* Update an Account */
+            update: function(account) {
+                accountResource.update(account); 
+            }    
         };
     }
 ]);

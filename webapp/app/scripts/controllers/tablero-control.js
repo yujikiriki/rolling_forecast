@@ -9,23 +9,12 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 
 		/* Attributes */
 		var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+		
 		$scope.years = ['2014', '2013', '2012'];
 		$scope.selectedYear = null;
-		$scope.businessLines = [{
-			'name': 'MESY'
-		}, {
-			'name': 'MCC'
-		}, {
-			'name': 'MCC'
-		}, {
-			'name': 'MCV'
-		}, {
-			'name': 'MSW'
-		}, {
-			'name': 'MEC'
-		}, {
-			'name': 'G'
-		}];
+
+		$scope.businessLines = ['MESY','MCC','MCC','MCV','MSW','MEC','G'];
+		$scope.selectedBusinessLine = null;
 
 		$scope.exampleData = [{
 			"key": "Order income",
@@ -34,13 +23,32 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 				['2013', 0],
 				['2014', 300],
 			]
-		}
-		];
+		}];
+
+		$scope.orderIncomeStates = [{
+			'name': 'Nueva'
+		}, {
+			'name': 'En evaluación'
+		}, {
+			'name': 'En negociación'
+		}, {
+			'name': 'Cerrada'
+		}, {
+			'name': 'Ganada'
+		}, {
+			'name': 'Perdida'
+		}, {
+			'name': 'Abandonada'
+		}];
 
 		/* Public */
 		$scope.renderReport = function() {
 			renderOrderIncomeReport();
 			renderSalesReport();
+		};
+
+		$scope.renderReportByBusinessLine = function() {
+			renderOrderIncomeReportByBusinessLine();
 		};
 
 		/* Private */
@@ -61,7 +69,27 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 					return e;
 				});
 				buildSalesReport(newReport);
-			});			
+			});
+		}
+
+		function renderOrderIncomeReportByBusinessLine() {
+			var oiReport = orderIncomeReportServices.queryBusinessLine($scope.selectedYear, $scope.selectedBusinessLine);
+			oiReport.then(function(result) {
+				var newReport = _.map(result, function(entry) {
+					var e = {
+						month: fromNumberToMonth(entry.month),
+						nueva: entry.nueva,
+						enEvaluacion: entry.enEvaluacion,
+						enNegociacion: entry.enNegociacion,
+						cerrada: entry.cerrada,
+						ganada: entry.ganada,
+						perdida: entry.perdida,
+						abandonada: entry.abandonada
+					};
+					return e;
+				});
+				buildOrderIncomeReport(newReport);				
+			});
 		}
 
 		function renderOrderIncomeReport() {
@@ -70,9 +98,13 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 				var newReport = _.map(result, function(entry) {
 					var e = {
 						month: fromNumberToMonth(entry.month),
-						hundred: entry.hundred,
-						fifty: entry.fifty,
-						ten: entry.ten
+						nueva: entry.nueva,
+						enEvaluacion: entry.enEvaluacion,
+						enNegociacion: entry.enNegociacion,
+						cerrada: entry.cerrada,
+						ganada: entry.ganada,
+						perdida: entry.perdida,
+						abandonada: entry.abandonada
 					};
 					return e;
 				});
@@ -108,20 +140,20 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 		}
 
 		function fromNumberToMonth(month) {
-			var months = new Map();
-			months.set('01', 'Enero');
-			months.set('02', 'Febrero');
-			months.set('03', 'Marzo');
-			months.set('04', 'Abril');
-			months.set('05', 'Mayo');
-			months.set('06', 'Junio');
-			months.set('07', 'Julio');
-			months.set('08', 'Agosto');
-			months.set('09', 'Septiembre');
-			months.set('10', 'Octubre');
-			months.set('11', 'Noviembre');
-			months.set('12', 'Diciembre');
-			return months.get(month);
+			var months = {};
+			months['01'] = 'Enero';
+			months['02'] = 'Febrero';
+			months['03'] = 'Marzo';
+			months['04'] = 'Abril';
+			months['05'] = 'Mayo';
+			months['06'] = 'Junio';
+			months['07'] = 'Julio';
+			months['08'] = 'Agosto';
+			months['09'] = 'Septiembre';
+			months['10'] = 'Octubre';
+			months['11'] = 'Noviembre';
+			months['12'] = 'Diciembre';
+			return months[month];
 		}
 	}
 ]);

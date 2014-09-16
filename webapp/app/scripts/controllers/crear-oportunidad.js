@@ -10,12 +10,11 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 		/* Constructor */
 		cargarCuentas();
 		cargarProductos();
-		cargarResponsables();
+		cargarResponsables();		
 
 		/* Feedback messages */
 		$scope.feedbackMessages = [];
 
-		/* Business lines */
 		$scope.states = [{
 			'name': 'Nueva'
 		}, {
@@ -41,7 +40,6 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 		$scope.crearOportunidad = function(isValid) {
 			if (isValid) {
 				var oportunidad = prepararOportunidadParaGuardar();
-				console.log('$scope.opportunity = ', $scope.opportunity);
 				opportunityServices.create(oportunidad);
 				$scope.feedbackMessages.push({
 					type: 'success',
@@ -73,8 +71,9 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 
 		/* Privados */
 		function prepararOportunidadParaGuardar() {
-			$scope.opportunity.accountId = $scope.opportunity.accountId._id.$oid;
+			console.log('$scope.opportunity.productId._id.$oid', $scope.opportunity.productId._id.$oid);
 			$scope.opportunity.productId = $scope.opportunity.productId._id.$oid;
+			$scope.opportunity.accountId = $scope.opportunity.accountId._id.$oid;
 			$scope.opportunity.userId = $scope.opportunity.responsible._id.$oid;
 			$scope.opportunity.quantity = parseInt($scope.opportunity.quantity);
 			$scope.opportunity.state = $scope.opportunity.state.name;
@@ -115,8 +114,8 @@ angular.module('frontendApp').controller('CrearOportunidadCtrl', [
 
 		function cargarProductos() {
 			var products = productServices.queryAll();
-			products.then(function(productList) {
-				$scope.products = productList;
+			products.then(function(productList) {				
+				$scope.products = productList;				
 			});
 		}
 	}

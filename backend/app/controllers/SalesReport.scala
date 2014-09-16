@@ -62,6 +62,14 @@ class SalesReport extends Controller with MongoController {
     list.toList
   }
 
+  def options( url: String ) = Action {
+    Ok( Json.obj( "results" -> "success" ) ).withHeaders(
+      "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers" -> "Content-Type, X-Requested-With, Accept, Authorization, User-Agent",
+      "Access-Control-Max-Age" -> ( 60 * 60 * 24 ).toString
+    )
+  }
+
 }
 
 case class SaleReportRow( month: String, hundred: Double, fifty: Double, ten: Double )
@@ -72,8 +80,6 @@ object SaleReportEntryJsonFormat {
 
   import play.api.libs.json._
   import play.api.libs.functional.syntax._
-
-  implicit val saleReportRowJsonFormat = Json.format[ SaleReportRow ]
 
   implicit val OrderIncomeReportEntryReads: Reads[ SaleReportEntry ] =
     ( ( JsPath \ "sale" \ "month" ).read[ String ] and ( JsPath \ "value" ).read[ Double ] and ( JsPath \ "sale" \ "probability" ).read[ Double ] )( SaleReportEntry.apply _ )

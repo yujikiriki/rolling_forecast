@@ -8,5 +8,5 @@ object ProductJsonFormat {
   import play.modules.reactivemongo.json.BSONFormats._
   import play.api.libs.json.Json
 
-  implicit val accountFormat = Json.format[ Product ]
+  implicit val productFormat = Json.format[ Product ]
 }

@@ -10,5 +10,9 @@
 * On the ```webapp``` folder, run ```grunt serve```
 * ```backend``` and ```webapp``` applications runs behind an ```haproxy``` instance.
 * To start ```mongodb``` instance run command ```~/dev/mongo/bin/mongod --dbpath ~/dev/mongo/data```
+* ssh -i my_key.pem ubuntu@rollingforecast
 
+# Deploy
+* Under ```backend``` folder run sbt and enter the command: ```dist```
+* Under the ```webapp``` folder run ```grunt build```
 

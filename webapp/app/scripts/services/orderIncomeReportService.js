@@ -10,7 +10,7 @@ reportModule.factory('orderIncomeReportServices', [
     'backend_server_ip',
     function($resource, backend_server_ip) {
         /* Resource definition */
-        var reportResource = $resource(
+        var reportPerYearResource = $resource(
             'http://' + backend_server_ip + '/api/order_income_report/:year', {
                 year: '@year'
             }, {
@@ -20,10 +20,32 @@ reportModule.factory('orderIncomeReportServices', [
                 }
             }
         );
+
+        var reportPerBusinessLineResource = $resource(
+            'http://' + backend_server_ip + '/api/order_income_report/:year/businessline/:businessline', {
+                year: 'year',
+                businessline: 'businessline'
+            }, {
+                'query': {
+                    method: 'GET',
+                    isArray: true
+                }
+            });
+
         return {
-            /* GET a Product */
-            query: function( nYear ) {
-                var report = reportResource.query({year: nYear});
+            /* GET report per year */
+            query: function(nYear) {
+                var report = reportPerYearResource.query({
+                    year: nYear
+                });
+                return report.$promise;
+            },
+
+            queryBusinessLine: function(nYear, nBusinessLine) {
+                var report = reportPerBusinessLineResource.query({
+                    year: nYear,                
+                    businessline: nBusinessLine
+                });
                 return report.$promise;
             }
         };
@@ -47,8 +69,10 @@ reportModule.factory('salesReportServices', [
         );
         return {
             /* GET a Product */
-            query: function( nYear ) {
-                var report = reportResource.query({year: nYear});
+            query: function(nYear) {
+                var report = reportResource.query({
+                    year: nYear
+                });
                 return report.$promise;
             }
         };

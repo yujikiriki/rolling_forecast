@@ -50,8 +50,9 @@ angular.module('frontendApp').controller('MaestroOportunidadesCtrl', [
 				.then( function() {
 					_.map($scope.opportunities, function(opportunity) {
 						var pProduct = productServices.get(opportunity.productId);
-						pProduct.then(function( product ) {
-							opportunity.productName = product.name;
+						pProduct.then(function( product ) {							
+							opportunity.productName = product.name;							
+							opportunity.businessLine = product.businessLine;
 						});
 					});					
 				})

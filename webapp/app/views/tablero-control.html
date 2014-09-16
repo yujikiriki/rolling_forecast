@@ -16,11 +16,11 @@
 	<div class="row">
 		<div class="form-group">
 			<label class="control-label" for="year">Año:</label>
-			<select required ng-model="selectedYear" class="form-control" name="businessLines" ng-options="year for year in years" ng-change="renderReport()"></select>	
+			<select required ng-model="selectedYear" class="form-control" name="year" ng-options="year for year in years" ng-change="renderReport()"></select>	
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="businessLines">Línea de negocio:</label>
-			<select required ng-model="report.businessLine" class="form-control" name="businessLines" ng-options="businessLine.name for businessLine in businessLines"></select>			
+			<select required ng-model="selectedBusinessLine" class="form-control" name="businessLines" ng-options="businessLine for businessLine in businessLines" ng-change="renderReportByBusinessLine()"></select>
 		</div>
 	</div>
 </div>
@@ -32,18 +32,20 @@
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Total OI</th>
-					<th>Ingresadas</th>
-					<th>En negociación</th>
-					<th>Abiertas</th>
+					<th>Mes</th>
+					<th ng-repeat="s in orderIncomeStates">{{s.name}}</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="r in orderIncomeReport">
-					<td>{{r.month}}</td>
-					<td>{{r.hundred}}</td>
-					<td>{{r.fifty}}</td>
-					<td>{{r.ten}}</td>
+				<tr ng-repeat="o in orderIncomeReport">
+					<td>{{o.month}}</td>
+					<td>{{o.nueva}}</td>
+					<td>{{o.enEvaluacion}}</td>
+					<td>{{o.enNegociacion}}</td>
+					<td>{{o.cerrada}}</td>
+					<td>{{o.ganada}}</td>
+					<td>{{o.perdida}}</td>
+					<td>{{o.abandonada}}</td>
 				</tr>
 			</tbody>
 		</table>		

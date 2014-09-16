@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontendApp').controller('CrearCuentaController', [
+angular.module('frontendApp').controller('ActualizarCuentaController', [
 	'$scope',
 	'accountServices',
 	function($scope, accountServices) {
@@ -107,7 +107,7 @@ angular.module('frontendApp').controller('CrearCuentaController', [
 		}];
 
 		/* Servicios */
-		$scope.crearCuenta = function(isValid) {
+		$scope.actualizarCuenta = function(isValid) {
 			if (isValid) {
 				$scope.account.departament = $scope.account.departament.name;
 				accountServices.create($scope.account);
