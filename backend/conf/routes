@@ -8,6 +8,7 @@ DELETE      /users/:id                                              @controllers
 GET         /users/:id                                              @controllers.Users.get(id)
 
 # Reports
+GET         /order_income_report                                   @controllers.YearOrderIncomeReport.get
 GET         /order_income_report/:year                              @controllers.OrderIncomeReport.get(year)
 GET         /order_income_report/:year/businessline/:businessline   @controllers.OrderIncomeReport.getWithBusinessLine(year,businessline)
 GET         /sales_report/:year                                     @controllers.SalesReport.get(year)

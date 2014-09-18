@@ -18,7 +18,7 @@ angular
     'mgcrea.ngStrap'
   ])
 // Constantes  
-  .constant('backend_server_ip', '54.164.84.236')// .constant('backend_server_ip', '192.168.1.15') // .constant('backend_server_ip', '54.164.84.236')
+  .constant('backend_server_ip', '192.168.1.15') //.constant('backend_server_ip', '54.164.84.236') 
 // Rutas  
   .config(function($routeProvider) {
     $routeProvider

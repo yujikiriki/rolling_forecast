@@ -5,25 +5,19 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 	'_',
 	'orderIncomeReportServices',
 	'salesReportServices',
-	function($scope, _, orderIncomeReportServices, salesReportServices) {
+	'orderIncomeTotalsReportServices',
+	function($scope, _, orderIncomeReportServices, salesReportServices, orderIncomeTotalsReportServices) {
 
 		/* Attributes */
 		var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-		
+
 		$scope.years = ['2014', '2013', '2012'];
 		$scope.selectedYear = null;
 
-		$scope.businessLines = ['MESY','MCC','MCC','MCV','MSW','MEC','G'];
+		$scope.businessLines = ['MESY', 'MCC', 'MCC', 'MCV', 'MSW', 'MEC', 'G'];
 		$scope.selectedBusinessLine = null;
 
-		$scope.exampleData = [{
-			"key": "Order income",
-			"values": [
-				['2012', 0],
-				['2013', 0],
-				['2014', 300],
-			]
-		}];
+		$scope.exampleData = [{"key": "Order income","values": []}];
 
 		$scope.orderIncomeStates = [{
 			'name': 'Nueva'
@@ -41,6 +35,9 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 			'name': 'Abandonada'
 		}];
 
+		/* Constructor */
+		queryOrderIncomeTotal();
+
 		/* Public */
 		$scope.renderReport = function() {
 			renderOrderIncomeReport();
@@ -53,7 +50,18 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 
 		/* Private */
 		function queryOrderIncomeTotal() {
-
+			var report = orderIncomeTotalsReportServices.query();
+			report.then(function(result) {
+				var e = {
+					key: "Order income",
+					values: []
+				};
+				e.values = _.map(result, function(entry) {
+					return [entry._id, entry.total];
+				});
+				console.log('e', e);
+				$scope.exampleData = [e];
+			});
 		}
 
 		function renderSalesReport() {
@@ -88,7 +96,7 @@ angular.module('frontendApp').controller('TableroControlCtrl', [
 					};
 					return e;
 				});
-				buildOrderIncomeReport(newReport);				
+				buildOrderIncomeReport(newReport);
 			});
 		}
 

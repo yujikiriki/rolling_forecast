@@ -219,13 +219,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "webapp/app/scripts/controllers/tablero-control.js",
+			"settings":
+			{
+				"buffer_size": 3973,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "db.opportunities.aggregate(\n   [\n     {\n       $group: {\n           _id: \"$order.year\",\n           totalAmount: { $sum: \"$value\" }\n       }\n     }\n   ]\n)",
+			"settings":
+			{
+				"buffer_size": 153,
+				"line_ending": "Unix",
+				"name": "db.opportunities.aggregate("
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 400.0,
+		"height": 245.0,
 		"selected_items":
 		[
+			[
+				"expor",
+				"OmniMarkupPreviewer: Export Current Markup as HTML"
+			],
+			[
+				"expo",
+				"OmniMarkupPreviewer: Export Current Markup as HTML"
+			],
+			[
+				"exp",
+				"OmniMarkupPreviewer: Export Current Markup as HTML"
+			],
+			[
+				"export",
+				"OmniMarkupPreviewer: Export Current Markup as HTML"
+			],
 			[
 				"rein",
 				"Indentation: Reindent Lines"
@@ -269,10 +302,6 @@
 			[
 				"ss s",
 				"Set Syntax: Scala"
-			],
-			[
-				"export",
-				"OmniMarkupPreviewer: Export Current Markup as HTML"
 			],
 			[
 				"table",
@@ -689,11 +718,14 @@
 	[
 		"/home/yuji/git/rolling_forecast/webapp",
 		"/home/yuji/git/rolling_forecast/webapp/app",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts"
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers"
 	],
 	"file_history":
 	[
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/app.js",
+		"/home/yuji/Desktop/bugs.md",
+		"/home/yuji/Desktop/certihuella.md",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/tablero-control.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/tablero-control.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/crear-oportunidad.html",
@@ -770,7 +802,6 @@
 		"/home/yuji/Desktop/robo-bum-test/robo-bum-project/robo-bum/src/com/s4n/modelo/concreto/DetectorMina.java",
 		"/home/yuji/Desktop/To do/ConceptoRepository.scala",
 		"/home/yuji/Desktop/ReactiveApplications.md",
-		"/home/yuji/Desktop/certihuella.md",
 		"/home/yuji/git/akka-lab/build.sbt",
 		"/home/yuji/git/akka-lab/src/main/resources/application-cluster.conf",
 		"/home/yuji/git/akka-lab/src/main/scala/demo/PingPongActor.scala",
@@ -819,12 +850,11 @@
 		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/bdd-protractor-tests/conf.js",
 		"/home/yuji/git/autos-mundial/maquetacion/consultar_usuario.html",
 		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-contrib-clean/docs/clean-options.md",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-google-cdn/node_modules/bower/node_modules/request/tests/test-https.js",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-commons-persistence/build.sbt"
+		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-google-cdn/node_modules/bower/node_modules/request/tests/test-https.js"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 49.0
 	},
 	"find_in_files":
 	{
@@ -845,6 +875,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"            \"_id\" : ObjectId(\"",
+			"            \"total\" : ",
+			"\"_id\" : ObjectId",
+			"http://redmine.certicamara.com:9191/redmine/issues/",
 			"{\"month\"",
 			"OrderIncomeReportEntry",
 			"reportResource",
@@ -968,11 +1002,7 @@
 			"concat",
 			"images",
 			"$state",
-			"angular",
-			"bowerInstall",
-			"bowerIn",
-			"uglify",
-			"bowerInstall"
+			"angular"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1004,8 +1034,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "webapp/app/scripts/controllers/tablero-control.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3973,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								624,
+								624
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								153,
+								153
+							]
+						],
+						"settings":
+						{
+							"auto_name": "db.opportunities.aggregate(",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
