@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"function"
+			],
+			[
 				"sele",
 				"selectedBusinessLine"
 			],
@@ -220,20 +224,11 @@
 	"buffers":
 	[
 		{
-			"file": "webapp/app/scripts/controllers/tablero-control.js",
+			"file": "webapp/app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 3973,
+				"buffer_size": 2040,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "db.opportunities.aggregate(\n   [\n     {\n       $group: {\n           _id: \"$order.year\",\n           totalAmount: { $sum: \"$value\" }\n       }\n     }\n   ]\n)",
-			"settings":
-			{
-				"buffer_size": 153,
-				"line_ending": "Unix",
-				"name": "db.opportunities.aggregate("
 			}
 		}
 	],
@@ -718,25 +713,29 @@
 	[
 		"/home/yuji/git/rolling_forecast/webapp",
 		"/home/yuji/git/rolling_forecast/webapp/app",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers"
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts"
 	],
 	"file_history":
 	[
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/orderIncomeTotalsReport.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/tablero-control.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/views/tablero-control.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/app.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/index.html",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/orderIncomeReportService.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/salesReportService.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/opportunityServices.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/loginServices.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/accountServices.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/userServices.js",
 		"/home/yuji/Desktop/bugs.md",
 		"/home/yuji/Desktop/certihuella.md",
-		"/home/yuji/git/rolling_forecast/webapp/app/views/tablero-control.html",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/tablero-control.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/crear-oportunidad.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/crear-oportunidad.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/crear-producto.html",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/orderIncomeReportService.js",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/opportunityServices.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/maestro-oportunidades.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/maestro-oportunidades.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/actualizar-cuenta.js",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/accountServices.js",
 		"/home/yuji/git/rolling_forecast/README.md",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/crear-cuenta.js",
 		"/home/yuji/git/bitacora/_layouts/post.html",
@@ -845,16 +844,11 @@
 		"/home/yuji/git/autos-mundial/mundial-services/mundial-services-sise/build.sbt",
 		"/home/yuji/git/autos-mundial/mundial-core/mundial-commons/src/main/scala/com/segurosmundial/commons/config/ConfigReader.scala",
 		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-bower-install/node_modules/bower-config/node_modules/mout/src/array/reduceRight.js",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/karma/config.tpl.coffee",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-usemin/lib/configwriter.js",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/bdd-protractor-tests/conf.js",
-		"/home/yuji/git/autos-mundial/maquetacion/consultar_usuario.html",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-contrib-clean/docs/clean-options.md",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-google-cdn/node_modules/bower/node_modules/request/tests/test-https.js"
+		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/karma/config.tpl.coffee"
 	],
 	"find":
 	{
-		"height": 49.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -875,6 +869,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Report",
+			"report",
+			"salesReportServicesProvider",
+			"alesReportServices",
 			"            \"_id\" : ObjectId(\"",
 			"            \"total\" : ",
 			"\"_id\" : ObjectId",
@@ -998,11 +996,7 @@
 			"Try[Future[Either]]]",
 			" listen_addresses = '*'",
 			"'",
-			"concat:",
-			"concat",
-			"images",
-			"$state",
-			"angular"
+			"concat:"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1034,61 +1028,31 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "webapp/app/scripts/controllers/tablero-control.js",
+					"file": "webapp/app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3973,
+						"buffer_size": 2040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								624,
-								624
+								361,
+								361
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 153,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								153,
-								153
-							]
-						],
-						"settings":
-						{
-							"auto_name": "db.opportunities.aggregate(",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": false
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1102,7 +1066,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -1142,7 +1106,7 @@
 	"project": "rollingforecast.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":

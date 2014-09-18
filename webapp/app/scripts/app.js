@@ -49,6 +49,10 @@ angular
         templateUrl: 'views/maestro-cuentas.html',
         controller: 'MaestroCuentasCtrl'
       })
+      .when('/cuentas/:idCuenta', {
+        templateUrl: 'views/actualizar-cuenta.html',
+        controller: 'ActualizarCuentaCtrl'
+      })      
 // Productos      
       .when('/crear-producto', {
         templateUrl: 'views/crear-producto.html',

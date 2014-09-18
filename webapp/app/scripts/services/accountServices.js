@@ -33,7 +33,9 @@ accountModule.factory('accountServices', [
 
             /* GET an Account */
             get: function(accountId) {
-                var account = accountResource.get({id: accountId});
+                var account = accountResource.get({
+                    id: accountId
+                });
                 return account.$promise;
             },
 
@@ -50,13 +52,17 @@ accountModule.factory('accountServices', [
 
             /* Delete an Account */
             delete: function(accountId) {
-                accountResource.delete({id: accountId});
+                accountResource.delete({
+                    id: accountId
+                });
             },
 
             /* Update an Account */
-            update: function(account) {
-                accountResource.update(account); 
-            }    
+            update: function(accountId, account) {
+                accountResource.update({
+                    id: accountId
+                }, account);
+            }
         };
     }
 ]);

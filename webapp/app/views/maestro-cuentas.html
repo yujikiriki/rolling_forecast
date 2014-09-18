@@ -20,7 +20,10 @@
 			<td>{{account.name}}</td>
 			<td>{{account.city}}</td>
 			<td>{{account.departament}}</td>
-			<td><a ng-confirm-message="¿Está seguro que dese eliminar la cuenta {{account.name}}?" ng-confirm-click="eliminarCuenta($parent.selected=account._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
+			<td>
+				<a ng-confirm-message="¿Está seguro que dese eliminar la cuenta {{account.name}}?" ng-confirm-click="eliminarCuenta($parent.selected=account._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a>
+				<a href ng-click="actualizarCuenta($parent.selected=account._id.$oid)" >Actualizar</a>
+			</td>		
 		</tr>
 	</tbody>
 </table>

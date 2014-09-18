@@ -1,0 +1,49 @@
+<ng-menubar></ng-menubar>
+<div ng-controller="ActualizarCuentaCtrl">
+        <alert ng-repeat="message in feedbackMessages" type="{{message.type}}" close="closeAlert($index)">{{message.text}}</alert>
+  <div class="panel panel-default">
+    <div class="panel-heading">Actualizar cuenta</div>
+    <div class="panel-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-11"> 
+            <form name="frmCrearCuenta" class="form-horizontal" role="form" novalidate>
+              <div class="form-group">
+                <label for="nit-cuenta">NIT:</label>
+                <input required ng-minlength="9" ng-model="account.nit" type="text" class="form-control" name="nitCuenta" placeholder="Ingrese el NIT de la cuenta" />
+                <p ng-show="frmCrearCuenta.nombreCuenta.$invalid" class="help-block">El NIT es obligatorio y debe contener 9 caracteres (sin digito de verificación).</p>
+              </div>            
+              <div class="form-group">
+                <label for="nombre-cuenta">Nombre de la cuenta:</label>
+                <input required ng-minlength="2" ng-model="account.name" type="text" class="form-control" name="nombreCuenta" placeholder="Ingrese el nombre de la cuenta" />
+                <p ng-show="frmCrearCuenta.nombreCuenta.$invalid" class="help-block">El nombre de cuenta es obligatorio y debe contener más de dos caracteres.</p>
+              </div>
+              <div class="form-group">
+              <label class="control-label" for="departamentos">Departamento:</label>
+              <select required ng-model="account.departament" class="form-control" name="departamentos" name="departamentos" ng-options="dept.name for dept in departaments"><option value="" selected>-- Seleccione el departamento --</option></select>
+              <p ng-show="frmCrearCuenta.departamentos.$invalid" class="help-block">Debe seleccionar un departamento.</p>
+            </div>
+            <div class="form-group">
+              <label for="municipios">Municipio:</label>
+              <select required ng-model="account.city" class="form-control" name="municipios" name="municipios">
+                <option value="" selected>-- Seleccione el municipio --</option>
+                <option ng-repeat='city in account.departament.cities' value='{{city}}'>{{city}}</option>
+              </select>
+              <p ng-show="frmCrearCuenta.municipios.$invalid" class="help-block">Debe seleccionar un municipio.</p>              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-9 col-lg-12">
+          <button type="button" class="btn btn btn-danger">Cancelar</button>
+          <button type="button" class="btn btn-success" ng-click="actualizarCuenta(frmCrearCuenta.$valid)" ng-disabled="frmCrearCuenta.$invalid">Crear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

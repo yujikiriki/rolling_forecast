@@ -76,11 +76,12 @@ class Accounts extends Controller with MongoController {
     }
   }
 
-  def update = Action.async( parse.json ) {
+  def update(id: String) = Action.async( parse.json ) {
     request =>
       request.body.validate[ Account ].map {
         account =>
-          collection.save( account ).map {
+          val newData =account.copy( _id = Some( BSONObjectID( id ) ) )
+          collection.save( newData ).map {
             lastError =>
               logger.debug( s"Successfully updated with LastError: $lastError" )
               Created( s"Account updated" )

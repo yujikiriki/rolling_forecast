@@ -8,7 +8,7 @@ DELETE      /users/:id                                              @controllers
 GET         /users/:id                                              @controllers.Users.get(id)
 
 # Reports
-GET         /order_income_report                                   @controllers.YearOrderIncomeReport.get
+GET         /order_income_report                                    @controllers.YearOrderIncomeReport.get
 GET         /order_income_report/:year                              @controllers.OrderIncomeReport.get(year)
 GET         /order_income_report/:year/businessline/:businessline   @controllers.OrderIncomeReport.getWithBusinessLine(year,businessline)
 GET         /sales_report/:year                                     @controllers.SalesReport.get(year)
@@ -16,6 +16,7 @@ GET         /sales_report/:year                                     @controllers
 # Accounts
 GET         /accounts                                               @controllers.Accounts.list
 POST        /accounts                                               @controllers.Accounts.create
+PUT         /accounts/:id                                           @controllers.Accounts.update(id)
 DELETE      /accounts/:id                                           @controllers.Accounts.delete(id)
 GET         /accounts/:id                                           @controllers.Accounts.get(id)
 
