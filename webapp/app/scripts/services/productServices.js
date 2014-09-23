@@ -32,7 +32,9 @@ productModule.factory('productServices', [
         return {
             /* GET a Product */
             get: function(productId) {
-                var product = productResource.get({id: productId});
+                var product = productResource.get({
+                    id: productId
+                });
                 return product.$promise;
             },
 
@@ -49,7 +51,16 @@ productModule.factory('productServices', [
 
             /* Delete an product */
             delete: function(productId) {
-                productResource.delete( { id : productId } );
+                productResource.delete({
+                    id: productId
+                });
+            },
+
+            /* Update a Product */
+            update: function(productId, product) {
+                productResource.update({
+                    id: productId
+                }, product);
             }
         };
     }

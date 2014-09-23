@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"account",
+				"accountId"
+			],
+			[
+				"$ro",
+				"$routeParams	AngularJS"
+			],
+			[
 				"fun",
 				"function"
 			],
@@ -54,10 +62,6 @@
 			[
 				"accu",
 				"accountList"
-			],
-			[
-				"account",
-				"accountName"
 			],
 			[
 				"ng-cl",
@@ -223,21 +227,17 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "webapp/app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 2040,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 245.0,
+		"height": 175.0,
 		"selected_items":
 		[
+			[
+				"export",
+				"OmniMarkupPreviewer: Export Current Markup as HTML"
+			],
 			[
 				"expor",
 				"OmniMarkupPreviewer: Export Current Markup as HTML"
@@ -248,10 +248,6 @@
 			],
 			[
 				"exp",
-				"OmniMarkupPreviewer: Export Current Markup as HTML"
-			],
-			[
-				"export",
 				"OmniMarkupPreviewer: Export Current Markup as HTML"
 			],
 			[
@@ -713,20 +709,40 @@
 	[
 		"/home/yuji/git/rolling_forecast/webapp",
 		"/home/yuji/git/rolling_forecast/webapp/app",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts"
+		"/home/yuji/git/rolling_forecast/webapp/app/bower_components",
+		"/home/yuji/git/rolling_forecast/webapp/app/bower_components/angular-scenario",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/directives",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services",
+		"/home/yuji/git/rolling_forecast/webapp/app/views"
 	],
 	"file_history":
 	[
+		"/home/yuji/Desktop/certihuella/bugs.md",
+		"/home/yuji/Desktop/certihuella/certihuella.md",
+		"/home/yuji/Desktop/sprayio.conf",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/actualizar-cuenta.js",
+		"/home/yuji/git/rolling_forecast/backend/.travis.yml",
+		"/home/yuji/git/rolling_forecast/backend/build.sbt",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/accountServices.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/views/actualizar-cuenta.html",
+		"/home/yuji/git/rolling_forecast/webapp/app/views/maestro-cuentas.html",
+		"/home/yuji/git/rolling_forecast/webapp/app/bower_components/angular-scenario/angular-scenario.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/maestro-cuentas.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/index.html",
+		"/home/yuji/git/rolling_forecast/webapp/app/views/maestro-productos.html",
+		"/home/yuji/git/rolling_forecast/webapp/app/scripts/app.js",
+		"/home/yuji/git/rolling_forecast/webapp/app/views/crear-cuenta.html",
+		"/home/yuji/git/core_seg/base/core_seg_configurador/core_seg_conf_webapp/app/scripts/controllers/coberturas.js",
+		"/home/yuji/git/core_seg/base/core_seg_configurador/core_seg_conf_webapp/app/scripts/controllers/negocios.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/orderIncomeTotalsReport.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/tablero-control.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/tablero-control.html",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/app.js",
-		"/home/yuji/git/rolling_forecast/webapp/app/index.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/orderIncomeReportService.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/salesReportService.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/opportunityServices.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/loginServices.js",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/accountServices.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/services/userServices.js",
 		"/home/yuji/Desktop/bugs.md",
 		"/home/yuji/Desktop/certihuella.md",
@@ -735,7 +751,6 @@
 		"/home/yuji/git/rolling_forecast/webapp/app/views/crear-producto.html",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/maestro-oportunidades.js",
 		"/home/yuji/git/rolling_forecast/webapp/app/views/maestro-oportunidades.html",
-		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/actualizar-cuenta.js",
 		"/home/yuji/git/rolling_forecast/README.md",
 		"/home/yuji/git/rolling_forecast/webapp/app/scripts/controllers/crear-cuenta.js",
 		"/home/yuji/git/bitacora/_layouts/post.html",
@@ -831,24 +846,11 @@
 		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/Test4.scala",
 		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/producers/TypesafeProducer.scala",
 		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/producers/package.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/AckType.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/KafkaLoggingConstants.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/LogEntry.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/consumers/KafkaLoggingConsumerProps.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/encoders/LogEntryEncoder.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/decoders/JSONDecoder.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-core-services/src/main/scala/com/segurosmundial/core/services/aggregate/package.scala",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-commons-persistence/src/main/scala/com/segurosmundial/commons/persistence/adapters/package.scala",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-transaccional/mundial-autos-domain/src/main/scala/com/segurosmundial/autos/domain/package.scala",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-transaccional/mundial-autos-services/build.sbt",
-		"/home/yuji/git/autos-mundial/mundial-services/mundial-services-sise/build.sbt",
-		"/home/yuji/git/autos-mundial/mundial-core/mundial-commons/src/main/scala/com/segurosmundial/commons/config/ConfigReader.scala",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/grunt-bower-install/node_modules/bower-config/node_modules/mout/src/array/reduceRight.js",
-		"/home/yuji/git/autos-mundial/mundial-autos/mundial-autos-webapp/node_modules/karma/config.tpl.coffee"
+		"/home/yuji/git/autos-mundial/mundial-core/mundial-logging/src/main/scala/com/segurosmundial/logging/kafka/AckType.scala"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -869,6 +871,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fecha",
+			"no-delay",
+			"spray.io.tcp.no-delay",
+			">",
+			"alertas",
 			"Report",
 			"report",
 			"salesReportServicesProvider",
@@ -991,12 +998,7 @@
 			"caption",
 			"date",
 			"order",
-			"localhost:9100",
-			"Try[Future[Either",
-			"Try[Future[Either]]]",
-			" listen_addresses = '*'",
-			"'",
-			"concat:"
+			"localhost:9100"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1004,6 +1006,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"'",
 			"font-weight: normal;",
 			"path",
@@ -1028,39 +1031,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "webapp/app/scripts/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2040,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								361,
-								361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1106,7 +1078,7 @@
 	"project": "rollingforecast.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 76.0
 	},
 	"save_all_on_build": true,
 	"select_file":

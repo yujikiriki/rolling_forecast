@@ -2,8 +2,9 @@
 
 angular.module('frontendApp').controller('MaestroUsuariosCtrl', [
 	'$scope',
+	'$location',
 	'userServices',
-	function($scope, userServices) {
+	function($scope, $location, userServices) {
 		/* Atributos */
 		$scope.users = [];
 
@@ -15,6 +16,11 @@ angular.module('frontendApp').controller('MaestroUsuariosCtrl', [
 			userServices.delete(oid);
 			$scope.users.splice(indice, 1);
 		};
+
+		$scope.actualizarUsuario = function(oid, indice) {
+			$location.path( 'usuarios/' + oid );		
+		};
+
 
 		/* Metodos privados */
 		function queryAll() {

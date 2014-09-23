@@ -80,7 +80,7 @@ class Accounts extends Controller with MongoController {
     request =>
       request.body.validate[ Account ].map {
         account =>
-          val newData =account.copy( _id = Some( BSONObjectID( id ) ) )
+          val newData = account.copy( _id = Some( BSONObjectID( id ) ) )
           collection.save( newData ).map {
             lastError =>
               logger.debug( s"Successfully updated with LastError: $lastError" )

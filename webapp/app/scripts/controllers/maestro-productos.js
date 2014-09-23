@@ -2,8 +2,9 @@
 
 angular.module('frontendApp').controller('MaestroProductosCtrl', [
 	'$scope',
+	'$location',
 	'productServices',
-	function ($scope, productServices) {
+	function ($scope, $location, productServices) {
 		/* Atributos */
 		$scope.products = [];
 
@@ -14,6 +15,10 @@ angular.module('frontendApp').controller('MaestroProductosCtrl', [
 		$scope.eliminarProducto = function(oid, indice) {
 			productServices.delete(oid);
 			$scope.products.splice(indice, 1);
+		};
+
+		$scope.actualizarProducto = function(oid) {
+			$location.path( 'productos/' + oid );
 		};
 
 		/* Metodos privados */

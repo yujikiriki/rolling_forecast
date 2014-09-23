@@ -21,9 +21,15 @@
 			<td>{{account.city}}</td>
 			<td>{{account.departament}}</td>
 			<td>
-				<a ng-confirm-message="¿Está seguro que dese eliminar la cuenta {{account.name}}?" ng-confirm-click="eliminarCuenta($parent.selected=account._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a>
-				<a href ng-click="actualizarCuenta($parent.selected=account._id.$oid)" >Actualizar</a>
-			</td>		
+				<a href ng-click="actualizarCuenta($parent.selected=account._id.$oid)">
+					<span class="glyphicon glyphicon-edit"></span>
+				</a>
+				<a href ng-confirm-message="¿Está seguro que dese eliminar la cuenta {{account.name}}?" 
+					 ng-confirm-click="eliminarCuenta($parent.selected=account._id.$oid, $parent.selected=$index)" 
+					 ng-confirm-condition="true" >
+					 <span class="glyphicon glyphicon-remove"></span>								 
+				 </a>
+			</td>
 		</tr>
 	</tbody>
 </table>

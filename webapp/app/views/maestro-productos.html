@@ -18,7 +18,14 @@
 			<td>{{product.businessLine}}</td>
 			<td>{{product.name}}</td>
 			<td>{{product.description}}</td>
-			<td><a ng-confirm-message="¿Está seguro que dese eliminar el producto {{product.name}}?" ng-confirm-click="eliminarProducto($parent.selected=product._id.$oid, $parent.selected=$index)" ng-confirm-condition="true" >Eliminar</a></td>
+			<td>
+				<a href ng-click="actualizarProducto($parent.selected=product._id.$oid)">
+					<span class="glyphicon glyphicon-edit"></span>
+				</a>			
+				<a href ng-confirm-message="¿Está seguro que dese eliminar el producto {{product.name}}?" ng-confirm-click="eliminarProducto($parent.selected=product._id.$oid, $parent.selected=$index)" ng-confirm-condition="true">
+					<span class="glyphicon glyphicon-remove"></span>
+				</a>
+			</td>
 		</tr>
 	</tbody>
 </table>

@@ -68,6 +68,13 @@ userModule.factory('userServices', [
             /* Delete user */
             delete: function(userId) {
                 userResource.delete({id: userId});
+            },
+
+            /* Update an Account */
+            update: function(userId, user) {
+                userResource.update({
+                    id: userId
+                }, user);
             }
         };
     }

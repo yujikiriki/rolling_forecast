@@ -25,6 +25,19 @@ class Products extends Controller with MongoController {
 
   def collection: JSONCollection = db.collection[ JSONCollection ]( "products" )
 
+  def update(id: String) = Action.async( parse.json ) {
+    request =>
+      request.body.validate[ Product ].map {
+        product =>
+          val newData = product.copy( _id = Some( BSONObjectID( id ) ) )
+          collection.save( newData ).map {
+            lastError =>
+              logger.debug( s"Successfully updated with LastError: $lastError" )
+              Created( s"Account updated" )
+          }
+      }.getOrElse( Future.successful( BadRequest( "invalid json" ) ) )
+  }
+
   def get( id: String ) = Action.async {
     val cursor: Cursor[ Product ] = collection
       .find( Json.obj( "_id" -> BSONObjectID( id ) ) )

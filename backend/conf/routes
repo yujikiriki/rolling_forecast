@@ -6,6 +6,7 @@ GET         /users                                                  @controllers
 POST        /users                                                  @controllers.Users.create
 DELETE      /users/:id                                              @controllers.Users.delete(id)
 GET         /users/:id                                              @controllers.Users.get(id)
+PUT         /users/:id                                              @controllers.Users.update(id)
 
 # Reports
 GET         /order_income_report                                    @controllers.YearOrderIncomeReport.get
@@ -25,6 +26,7 @@ GET         /products                                               @controllers
 POST        /products                                               @controllers.Products.create
 DELETE      /products/:id                                           @controllers.Products.delete(id)
 GET         /products/:id                                           @controllers.Products.get(id)
+PUT         /products/:id                                           @controllers.Products.update(id)
 
 # Opportunities
 GET         /opportunities                                          @controllers.Opportunities.list

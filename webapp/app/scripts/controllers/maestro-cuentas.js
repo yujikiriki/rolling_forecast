@@ -24,7 +24,7 @@ angular.module('frontendApp').controller('MaestroCuentasCtrl', [
 		/* Metodos privados */
 		function queryAll() {
 			var accounts = accountServices.queryAll();
-			accounts.then(function(accountList) {				
+			accounts.then(function(accountList) {
 				$scope.accounts = accountList;
 			});
 		};

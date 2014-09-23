@@ -19,6 +19,19 @@ class Users extends Controller with MongoController {
 
   def collection: JSONCollection = db.collection[ JSONCollection ]( "users" )
 
+  def update(id: String) = Action.async( parse.json ) {
+    request =>
+      request.body.validate[ User ].map {
+        user =>
+          val newData = user.copy( _id = Some( BSONObjectID( id ) ) )
+          collection.save( newData ).map {
+            lastError =>
+              logger.debug( s"Successfully updated with LastError: $lastError" )
+              Created( s"User updated" )
+          }
+      }.getOrElse( Future.successful( BadRequest( "invalid json" ) ) )
+  }
+
   def get( id: String ) = Action.async {
     val cursor: Cursor[ User ] = collection.find( Json.obj( "_id" -> BSONObjectID( id ) ) ).sort( Json.obj( "created" -> -1 ) ).cursor[ User ]
     cursor.collect[ List ]( ).map {

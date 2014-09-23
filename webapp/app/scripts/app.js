@@ -18,7 +18,7 @@ angular
     'mgcrea.ngStrap'
   ])
 // Constantes  
-  .constant('backend_server_ip', '192.168.1.15') //.constant('backend_server_ip', '54.164.84.236') 
+  .constant('backend_server_ip', '0.0.0.0') //.constant('backend_server_ip', '54.164.84.236') 
 // Rutas  
   .config(function($routeProvider) {
     $routeProvider
@@ -34,6 +34,10 @@ angular
       .when('/usuarios', {
         templateUrl: 'views/maestro-usuarios.html',
         controller: 'MaestroUsuariosCtrl'
+      })
+      .when('/usuarios/:idUsuario', {
+        templateUrl: 'views/actualizar-usuario.html',
+        controller: 'ActualizarUsuarioController'
       })      
 // Tablero de control      
       .when('/tablero-control', {
@@ -52,7 +56,7 @@ angular
       .when('/cuentas/:idCuenta', {
         templateUrl: 'views/actualizar-cuenta.html',
         controller: 'ActualizarCuentaCtrl'
-      })      
+      })
 // Productos      
       .when('/crear-producto', {
         templateUrl: 'views/crear-producto.html',
@@ -62,6 +66,10 @@ angular
         templateUrl: 'views/maestro-productos.html',
         controller: 'MaestroProductosCtrl'
       })
+      .when('/productos/:idProducto', {
+        templateUrl: 'views/actualizar-producto.html',
+        controller: 'ActualizarProductoCtrl'
+      })      
 // Oportunidades
       .when('/crear-oportunidad', {
         templateUrl: 'views/crear-oportunidad.html',
